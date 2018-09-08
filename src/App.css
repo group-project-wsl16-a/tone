@@ -1,0 +1,9 @@
+.App {
+  align-items: center
+}
+
+.box {
+  height: 100px;
+  width: 100px;
+  background-color: blue
+}
