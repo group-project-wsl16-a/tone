@@ -1,19 +1,50 @@
-.App {
-  align-items: center
+body,
+html,
+#cnvs {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #141e30; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to left,
+    #243b55,
+    #141e30
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to left,
+    #243b55,
+    #141e30
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  font-family: sans-serif;
 }
 
-.box {
-  height: 100px;
-  width: 100px;
-  background-color: blue
-}
-
-.playground {
-  border: black 1px solid;
-  height: 500px;
-  width: 500px;
-}
-
-.containerContainer {
+.modes {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modes button {
+  width: 100px;
+  height: 40px;
+  margin: 0 5px;
+  color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: none;
+  border-radius: 2px;
+  font-size: 14px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.modes button:hover {
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
