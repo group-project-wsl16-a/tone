@@ -9,15 +9,16 @@ const Vox = require('../Tonal - Audio/Tonal - Stop And Go Vox.wav')
 class Soundboard extends Component {
     constructor () {
         super ()
+
+        this.mountainInput = React.createRef();
         this.state = {
             synth: new Tone.Synth().toMaster(),
-            power: true,
-            // vol: new Tone.Volume(-20),
             drums: new Tone.Player({
                 "url" : Drum,
                 "loop" : true,
                 "fadeIn" : '5s',
             }).toMaster(),
+            drumPercent: 57,
             beach: new Tone.Player({
                 "url" : BeachSynth,
                 "loop" : true,
@@ -37,27 +38,25 @@ class Soundboard extends Component {
     }
 
     handleClick = () => {
-        this.setState({ power: !this.state.power})
-        if (this.state.power === true) {
+        this.state.drums.stop()
+        this.state.beach.stop()
+        this.state.icy.stop()
+        this.state.vox.stop()
+    }
+
+    componentWillMount = () => {
+        Tone.Buffer.on('load', () => {
             this.state.drums.start()
             this.state.beach.start()
             this.state.icy.start()
             this.state.vox.start()
-        } else {
-            this.state.drums.stop()
-            this.state.beach.stop()
-            this.state.icy.stop()
-            this.state.vox.stop()
-        }
+        })
     }
 
-    componentDidMount = () => {
-        Tone.Transport.bpm.value = 84
-    }
-
-    handleChange = (inst, val) => {
+    handleChange = (inst, val, min, max) => {
         if (inst === 'drum') {
             this.state.drums.volume.value = val
+            this.findPercentage(val, min, max)
         } else if (inst === 'beach') {
             this.state.beach.volume.value = val
         } else if (inst === 'icy') {
@@ -67,16 +66,22 @@ class Soundboard extends Component {
         }
     }
 
+    findPercentage = (val, min, max) => {
+        var newMin = parseInt(min)
+        var newMax = parseInt(max)
+        var newVal = parseInt(val)
+        var percentage = ((newVal - newMin) * 100) / (newMax - newMin)
+        if (percentage <= 5) {
+            percentage = 5
+        }
+        this.setState({ drumPercent : 100-percentage })
+    }
+
 
     render() {
         return (
         <div className="SoundboardBody">
-            <button className="musicButton" onClick={() => this.handleClick()} >Play Belutiful Music</button>
             <div className="SliderContainer" >
-                <div className="IndividualSliderContainer" >
-                    Drums
-                    <input className="VolumeSlider" type="range" min="-25" max="10" defaultValue='-5' onInput={(e) => this.handleChange('drum', e.target.value)} />
-                </div>
                 <div className="IndividualSliderContainer" >
                     Synth
                     <input className="VolumeSlider" type="range" min="-45" max="6" defaultValue='-10' onInput={(e) => this.handleChange('beach', e.target.value)} />
@@ -90,6 +95,10 @@ class Soundboard extends Component {
                     <input className="VolumeSlider" type="range" min="-30" max="3" defaultValue='-5' onInput={(e) => this.handleChange('vox', e.target.value)} />
                 </div>
             </div>
+            <div className="bkgMount" ></div>
+            <div className="Mountain" style={{'clip-path' : `polygon(50% ${this.state.drumPercent}%, 0 100%, 100% 100%)`}} ></div>
+            <div className="Grabber" onMouseEnter={() => this.mountainInput.current.classList.add('hover')} onMouseLeave={() => this.mountainInput.current.classList.remove('hover')} ></div>
+            <input ref={this.mountainInput} className="VolumeSlider DrumSliderVolume" id="DrumSlider" type="range" min="-25" max="10" defaultValue='-5' onInput={(e) => this.handleChange('drum', e.target.value, e.target.min, e.target.max)} />
         </div>
         );
     }
