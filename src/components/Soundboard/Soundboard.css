@@ -1,0 +1,63 @@
+.SoundboardBody {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.musicButton {
+    height: 30vh;
+    width: 50vw;
+    border: 1px solid #2cb5e8;
+    border-radius: 15px;
+    font-size: 30px;
+    font-family: 'Trebuchet MS';
+    background: linear-gradient(141deg, #1fc8db 30%, #2cb5e8);
+    cursor: pointer;
+}
+
+.musicButton:focus {
+    outline: none;
+}
+
+.SliderContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.IndividualSliderContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.VolumeSlider {
+    -webkit-appearance: slider-vertical;
+}
+
+#DrumSlider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100px;
+    background: transparent;
+    transform: rotate(90deg);
+}
+
+#DrumSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 23px;
+    height: 23px;
+    border: 0;
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+}
+
+.Mountain {
+    background: blue;
+    width: 100px;
+    height: 100px;
+}
+
+.musicButton:active {
+    box-shadow: inset 0px 0px 25px #2a90b6;
+}
