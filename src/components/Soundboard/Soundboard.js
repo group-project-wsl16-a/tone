@@ -16,6 +16,11 @@ class Soundboard extends Component {
     this.HourTwo = React.createRef();
     this.HourThree = React.createRef();
 
+    this.slow = {
+      speed: 90,
+      size: 0.5
+    };
+
     this.state = {
       synth: new Tone.Synth().toMaster(),
       drums: new Tone.Player({
@@ -102,7 +107,8 @@ class Soundboard extends Component {
     } else if (inst === "beach") {
       this.state.beach.volume.value = val;
       this.changeDay(val, min, max);
-    } else if (inst === "icy") {
+    } else if (inst === "Icy") {
+      console.log("asdklfjads", this.state.icy.volume.value);
       this.state.icy.volume.value = val;
     } else {
       this.state.vox.volume.value = val;
@@ -174,7 +180,32 @@ class Soundboard extends Component {
     return (
       <div>
         <div id="background-wrap">
-          <div class="x1">
+          <div
+            class="x1"
+            style={
+              this.state.icy.volume.value < -30
+                ? {
+                    webkitAnimation: `animateCloud ${
+                      this.slow.speed
+                    }s linear infinite`,
+                    mozAnimation: "animateCloud 90s linear infinite",
+                    animation: "animateCloud 90s linear infinite",
+
+                    webkitTransform: `scale(${this.slow.size})`,
+                    mozTransform: "scale(0.4)",
+                    transform: "scale(0.4)"
+                  }
+                : {
+                    webkitAnimation: "animateCloud 45s linear infinite",
+                    mozAnimation: "animateCloud 45s linear infinite",
+                    animation: "animateCloud 45s linear infinite",
+
+                    webkitTransform: "scale(0.65)",
+                    mozTransform: "scale(0.65)",
+                    transform: "scale(0.65)"
+                  }
+            }
+          >
             <div class="cloud" />
           </div>
 
@@ -259,6 +290,29 @@ class Soundboard extends Component {
             onInput={e =>
               this.handleChange(
                 "beach",
+                e.target.value,
+                e.target.min,
+                e.target.max
+              )
+            }
+          />
+          {/* { Icy Synth } */}
+          <div
+            className="IcyGrabber"
+            onMouseEnter={() => this.handleMouseEnter("icy")}
+            onMouseLeave={() => this.handleMouseLeave("icy")}
+          />
+          <input
+            ref={this.icyInput}
+            className="VolumeSlider Blink"
+            id="IcySynth"
+            type="range"
+            min="-45"
+            max="6"
+            defaultValue="-10"
+            onInput={e =>
+              this.handleChange(
+                "Icy",
                 e.target.value,
                 e.target.min,
                 e.target.max
