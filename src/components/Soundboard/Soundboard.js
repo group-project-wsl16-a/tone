@@ -67,40 +67,35 @@ class Soundboard extends Component {
     this.state.vox.stop();
   };
 
-  handleMouseEnter = inst => {
-    this.mountainInput.current.classList.remove("Blink");
-    this.skyInput.current.classList.remove("Blink");
-    if (inst === "drum") {
-      this.mountainInput.current.classList.add("hover");
-    } else if (inst === "beach") {
-      this.skyInput.current.classList.add("hover");
-    } else if (inst === "icy") {
-    } else {
-    }
-  };
+  handleMouseEnter = (inst, i) => {
+      this.mountainInput.current.classList.remove('Blink')
+      this.skyInput.current.classList.remove('Blink')
+      if (inst === 'drum') {
+          this.mountainInput.current.classList.add('hover')
+      } else if (inst === 'beach') {
+          this.skyInput.current.classList.add('hover')
+      } else if (inst === 'star') {
+          document.getElementById(i).classList.add('hovered')
+      } else if (inst === 'icy') {
+          this.icyInput.current.classList.add('hover')
+      } else {
+      }
+  }
 
-  handleMouseLeave = inst => {
-    this.mountainInput.current.classList.add("Blink");
-    this.skyInput.current.classList.add("Blink");
-    this.setState({ blink: true });
-    if (inst === "drum") {
-      this.mountainInput.current.classList.remove("hover");
-    } else if (inst === "beach") {
-      this.skyInput.current.classList.remove("hover");
-    } else if (inst === "icy") {
-    } else {
-    }
-  };
-
-  componentDidMount() {
-    console.log(
-      window
-        .getComputedStyle(
-          document.getElementById("BeachSynth"),
-          "::-webkit-slider-thumb"
-        )
-        .getPropertyValue("y-index")
-    );
+  handleMouseLeave = (inst, i) => {
+      this.mountainInput.current.classList.add('Blink')
+      this.skyInput.current.classList.add('Blink')
+      this.setState({ blink : true})
+      if (inst === 'drum') {
+          this.mountainInput.current.classList.remove('hover')
+      } else if (inst === 'beach') {
+          this.skyInput.current.classList.remove('hover')
+      } else if (inst === 'star') {
+          document.getElementById(i).classList.remove('hovered')
+      } else if (inst === 'icy') {
+          this.icyInput.current.classList.remove('hover')
+      } else {
+      }
   }
 
   componentWillMount = () => {
@@ -126,7 +121,6 @@ class Soundboard extends Component {
     } else {
       this.state.vox.volume.value = val;
     }
-  };
 
   changeDay = (val, min, max) => {
     var newMin = parseInt(min);
@@ -192,6 +186,9 @@ class Soundboard extends Component {
   render() {
     return (
       <div>
+        <div className="SoundboardBody" ref={this.SoundboardBody} onClick={this.handleClick}>
+        <div ref={this.HourTwo} className="backgroundSecondHour" />
+        <div ref={this.HourThree} className="backgroundThirdHour" />
         <div id="background-wrap">
           <div
             className="cloud"
@@ -265,92 +262,25 @@ class Soundboard extends Component {
           <div ref={this.HourTwo} className="backgroundSecondHour" />
           <div ref={this.HourThree} className="backgroundThirdHour" />
 
-          {/* Drums */}
-          <div className="bkgMount" />
-          <div
-            className="Mountain"
-            style={{
-              "clip-path": `polygon(50% ${
-                this.state.drumPercent
-              }%, 0 100%, 100% 100%)`
-            }}
-          />
-          <div
-            className="DrumGrabber"
-            onMouseEnter={() => this.handleMouseEnter("drum")}
-            onMouseLeave={() => this.handleMouseLeave("drum")}
-          />
-          <input
-            ref={this.mountainInput}
-            className="VolumeSlider Blink"
-            id="DrumSlider"
-            type="range"
-            min="-25"
-            max="10"
-            defaultValue="-5"
-            onMouseEnter={() => this.handleMouseEnter("drum")}
-            onInput={e =>
-              this.handleChange(
-                "drum",
-                e.target.value,
-                e.target.min,
-                e.target.max
-              )
-            }
-          />
-          {/* Beach Synth */}
-          <div
-            className="BeachGrabber"
-            onMouseEnter={() => this.handleMouseEnter("beach")}
-            onMouseLeave={() => this.handleMouseLeave("beach")}
-          />
-          <input
-            ref={this.skyInput}
-            className="VolumeSlider Blink"
-            id="BeachSynth"
-            type="range"
-            min="-45"
-            max="6"
-            defaultValue="-10"
-            onInput={e =>
-              this.handleChange(
-                "beach",
-                e.target.value,
-                e.target.min,
-                e.target.max
-              )
-            }
-          />
-          {/* { Icy Synth } */}
-          <div
-            className="IcyGrabber"
-            onMouseEnter={() => this.handleMouseEnter("icy")}
-            onMouseLeave={() => this.handleMouseLeave("icy")}
-          />
-          <input
-            ref={this.icyInput}
-            className="VolumeSlider Blink"
-            id="IcySynth"
-            type="range"
-            min="-45"
-            max="6"
-            defaultValue="-10"
-            onInput={e =>
-              this.handleChange(
-                "Icy",
-                e.target.value,
-                e.target.min,
-                e.target.max
-              )
-            }
-          />
-          <div className="directionalBlinkers BeachBlinkers" />
+                {/* Drums */}
+                <div className="bkgMount" ></div>
+                <div className="Mountain" style={{'clip-path' : `polygon(50% ${this.state.drumPercent}%, 0 100%, 100% 100%)`}} ></div>
+                <div className="DrumGrabber" onMouseEnter={() => this.handleMouseEnter('drum')} onMouseLeave={() => this.handleMouseLeave('drum')} ></div>
+                <input ref={this.mountainInput} className="VolumeSlider Blink" id="DrumSlider" type="range" min="-25" max="10" defaultValue='-10' onMouseEnter={() => this.handleMouseEnter('drum')} onInput={(e) => this.handleChange('drum', e.target.value, e.target.min, e.target.max)} />
+                {/* Beach Synth */}
+                <div className="BeachGrabber" onMouseEnter={() => this.handleMouseEnter('beach')} onMouseLeave={() => this.handleMouseLeave('beach')} ></div>
+                <input ref={this.skyInput} className="VolumeSlider Blink" id="BeachSynth" type="range" min="-20" max="6" defaultValue='-10' onMouseEnter={() => this.handleMouseEnter('beach')} onInput={(e) => this.handleChange('beach', e.target.value, e.target.min, e.target.max)} />
+                {/* Icy Synth */}
+                <div className="IcyGrabber" onMouseEnter={() => this.handleMouseEnter("icy")} onMouseLeave={() => this.handleMouseLeave("icy")}/></div>
+                <input ref={this.icyInput} className="VolumeSlider Blink" id="IcySynth" type="range" min="-45" max="6" defaultValue="-10" onInput={e => this.handleChange("Icy",e.target.value,e.target.min,e.target.max)} />
+                
+                {this.state.star.map((star, i) =>
+                    <div key={i} className="star" id={i} style={{ 'left' : `${star.x - 25}px`, 'top' : `${star.y - 25}px`}} onMouseEnter={() => this.handleMouseEnter('star', i)} onMouseLeave={() => this.handleMouseLeave('star', i)} onClick={(e) => this.removeStar(e, i)}></div>
+                )}
+                {this.starCounter()}
         </div>
-      </div>
-    );
-  }
+        );
+    }
 }
 
 export default Soundboard;
-
-// this.setState({ blink : false})
