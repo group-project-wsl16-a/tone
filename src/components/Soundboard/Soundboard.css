@@ -184,6 +184,7 @@
   position: absolute;
   top: 225px;
   right: 100px;
+  /* border: white 1px solid; */
   transform: rotate(235deg);
   width: 250px;
   height: 23px;
@@ -192,6 +193,7 @@
 #DrumSlider {
   position: absolute;
   bottom: 300px;
+  /* border: white 1px solid; */
   transform: rotate(270deg);
   width: 550px;
   height: 23px;
@@ -201,7 +203,8 @@
   position: absolute;
   top: 300px;
   left: 400px;
-  transform: rotate(90deg);
+  /* border: white 1px solid; */
+  transform: rotate(270deg);
   width: 250px;
   height: 23px;
 }
