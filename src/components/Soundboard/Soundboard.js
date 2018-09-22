@@ -10,11 +10,12 @@ class Soundboard extends Component {
   constructor() {
     super();
 
-    this.mountainInput = React.createRef();
-    this.skyInput = React.createRef();
-    this.SoundboardBody = React.createRef();
-    this.HourTwo = React.createRef();
-    this.HourThree = React.createRef();
+        this.mountainInput = React.createRef();
+        this.skyInput = React.createRef();
+        this.SoundboardBody = React.createRef();
+        this.HourTwo = React.createRef();
+        this.HourThree = React.createRef();
+        this.icyInput = React.createRef();
 
     this.slow = {
       speed: 80,
@@ -67,36 +68,37 @@ class Soundboard extends Component {
     this.state.vox.stop();
   };
 
-  handleMouseEnter = (inst, i) => {
-      this.mountainInput.current.classList.remove('Blink')
-      this.skyInput.current.classList.remove('Blink')
-      if (inst === 'drum') {
-          this.mountainInput.current.classList.add('hover')
-      } else if (inst === 'beach') {
-          this.skyInput.current.classList.add('hover')
-      } else if (inst === 'star') {
-          document.getElementById(i).classList.add('hovered')
-      } else if (inst === 'icy') {
-          this.icyInput.current.classList.add('hover')
-      } else {
-      }
-  }
+    handleMouseEnter = (inst, i) => {
+        this.mountainInput.current.classList.remove('Blink')
+        this.skyInput.current.classList.remove('Blink')
+        this.icyInput.current.classList.remove('Blink')
+        if (inst === 'drum') {
+            this.mountainInput.current.classList.add('hover')
+        } else if (inst === 'beach') {
+            this.skyInput.current.classList.add('hover')
+        } else if (inst === 'star') {
+            document.getElementById(i).classList.add('hovered')
+        } else if (inst === 'icy') {
+            this.icyInput.current.classList.add('hover')
+        } else {
+        }
+    }
 
-  handleMouseLeave = (inst, i) => {
-      this.mountainInput.current.classList.add('Blink')
-      this.skyInput.current.classList.add('Blink')
-      this.setState({ blink : true})
-      if (inst === 'drum') {
-          this.mountainInput.current.classList.remove('hover')
-      } else if (inst === 'beach') {
-          this.skyInput.current.classList.remove('hover')
-      } else if (inst === 'star') {
-          document.getElementById(i).classList.remove('hovered')
-      } else if (inst === 'icy') {
-          this.icyInput.current.classList.remove('hover')
-      } else {
-      }
-  }
+    handleMouseLeave = (inst, i) => {
+        this.mountainInput.current.classList.add('Blink')
+        this.skyInput.current.classList.add('Blink')
+        this.icyInput.current.classList.add('Blink')
+        if (inst === 'drum') {
+            this.mountainInput.current.classList.remove('hover')
+        } else if (inst === 'beach') {
+            this.skyInput.current.classList.remove('hover')
+        } else if (inst === 'star') {
+            document.getElementById(i).classList.remove('hovered')
+        } else if (inst === 'icy') {
+            this.icyInput.current.classList.remove('hover')
+        } else {
+        }
+    }
 
   componentWillMount = () => {
     Tone.Buffer.on("load", () => {
@@ -272,7 +274,7 @@ class Soundboard extends Component {
                 <input ref={this.skyInput} className="VolumeSlider Blink" id="BeachSynth" type="range" min="-20" max="6" defaultValue='-10' onMouseEnter={() => this.handleMouseEnter('beach')} onInput={(e) => this.handleChange('beach', e.target.value, e.target.min, e.target.max)} />
                 {/* Icy Synth */}
                 <div className="IcyGrabber" onMouseEnter={() => this.handleMouseEnter("icy")} onMouseLeave={() => this.handleMouseLeave("icy")}/></div>
-                <input ref={this.icyInput} className="VolumeSlider Blink" id="IcySynth" type="range" min="-45" max="6" defaultValue="-10" onInput={e => this.handleChange("Icy",e.target.value,e.target.min,e.target.max)} />
+                <input ref={this.icyInput} className="VolumeSlider Blink" id="IcySynth" type="range" min="-45" max="6" defaultValue="-10" onMouseEnter={() => this.handleMouseEnter('icy')} onInput={e => this.handleChange("Icy",e.target.value,e.target.min,e.target.max)} />
                 
                 {this.state.star.map((star, i) =>
                     <div key={i} className="star" id={i} style={{ 'left' : `${star.x - 25}px`, 'top' : `${star.y - 25}px`}} onMouseEnter={() => this.handleMouseEnter('star', i)} onMouseLeave={() => this.handleMouseLeave('star', i)} onClick={(e) => this.removeStar(e, i)}></div>
