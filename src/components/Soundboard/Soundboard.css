@@ -1,12 +1,92 @@
+.SoundboardBody {
+  height: 100vh;
+  width: 100vw;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background: -webkit-linear-gradient(
+    130deg,
+    #d6b98d 9%,
+    #c99262 14%,
+    #8c5962 30%,
+    #43577e 100%
+  );
+  transition: 0.3s;
+}
+
+.backgroundSecondHour {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  /* background: -webkit-linear-gradient(25deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%); */
+  background: -webkit-linear-gradient(
+    -130deg,
+    #db8876 1%,
+    #eabc96 10%,
+    #d6cbca 20%,
+    #a4c8dc 40%,
+    #6bafd2 100%
+  );
+  opacity: 1;
+  transition: 0.3s;
+}
+
+.backgroundThirdHour {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100vw;
+  background: -webkit-linear-gradient(
+    80deg,
+    #a2e0f9 6%,
+    #cef5fc 39%,
+    #eafaeb 70%,
+    #fefcd3 88%,
+    #fdf4ba 100%
+  );
+  opacity: 0.3;
+  transition: 0.3s;
+}
+
+.star {
+  height: 70px;
+  width: 70px;
+  border-radius: 50%;
+  background: white;
+  position: absolute;
+  transition: .5s;
+  transform-origin: center;
+  animation-duration: 1s;
+  animation-name: blink;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes blink {
+  0% {clip-path: polygon(15% 50%, 40% 40%, 50% 0%, 60% 40%, 85% 50%, 60% 60%, 50% 100%, 40% 60%)}
+  100% {clip-path: polygon(0% 50%, 40% 40%, 50% 15%, 60% 40%, 100% 50%, 60% 60%, 50% 85%, 40% 60%);}
+}
+
+.hovered {
+  transform: scale(1.5)
+}
+
+.Blink::-webkit-slider-thumb{
+  clip-path: polygon(55% 0, 80% 50%, 55% 100%, 45% 100%, 25% 50%, 45% 0);
+  transform: rotate(270deg);
+  border: 4px black solid;
+  opacity: 0.3;
+}
+
 #background-wrap {
-  bottom: 0;
   left: 0;
-  padding-top: 50px;
+  top: 100px;
+  width: 100vw;
   position: fixed;
-  right: 0;
-  top: 0;
-  z-index: 2;
-  pointer-events: none;
 }
 
 /* KEYFRAMES */
@@ -149,90 +229,6 @@
   height: 180px;
   right: 50px;
   top: -90px;
-}
-
-.SoundboardBody {
-  height: 100vh;
-  width: 100vw;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background: -webkit-linear-gradient(
-    130deg,
-    #d6b98d 9%,
-    #c99262 14%,
-    #8c5962 30%,
-    #43577e 100%
-  );
-  transition: 0.3s;
-}
-
-.backgroundSecondHour {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100vh;
-  width: 100vw;
-  /* background: -webkit-linear-gradient(25deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%); */
-  background: -webkit-linear-gradient(
-    -130deg,
-    #db8876 1%,
-    #eabc96 10%,
-    #d6cbca 20%,
-    #a4c8dc 40%,
-    #6bafd2 100%
-  );
-  opacity: 1;
-  transition: 0.3s;
-}
-
-.backgroundThirdHour {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  height: 100vh;
-  width: 100vw;
-  background: -webkit-linear-gradient(
-    80deg,
-    #a2e0f9 6%,
-    #cef5fc 39%,
-    #eafaeb 70%,
-    #fefcd3 88%,
-    #fdf4ba 100%
-  );
-  opacity: 0.3;
-  transition: 0.3s;
-}
-
-.star {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    background: white;
-    position: absolute;
-    transition: .5s;
-    transform-origin: center;
-    animation-duration: 1s;
-    animation-name: blink;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in-out;
-}
-
-@keyframes blink {
-    0% {clip-path: polygon(15% 50%, 40% 40%, 50% 0%, 60% 40%, 85% 50%, 60% 60%, 50% 100%, 40% 60%)}
-    100% {clip-path: polygon(0% 50%, 40% 40%, 50% 15%, 60% 40%, 100% 50%, 60% 60%, 50% 85%, 40% 60%);}
-}
-
-.hovered {
-    transform: scale(1.5)
-}
-
-.Blink::-webkit-slider-thumb{
-    clip-path: polygon(55% 0, 80% 50%, 55% 100%, 45% 100%, 25% 50%, 45% 0);
-    transform: rotate(270deg);
-    border: 4px black solid;
-    opacity: 0.3;
 }
 
 .VolumeSlider:focus {
