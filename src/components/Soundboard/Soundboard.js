@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import './Soundboard.css';
-import Tone from 'tone' 
-const Drum = require('../Tonal - Audio/Tonal - Acoustic Layers Beat 02.wav')
-const BeachSynth = require('../Tonal - Audio/Tonal - Beach Run Synth.wav')
-const IcySynth = require('../Tonal - Audio/Tonal - Icy Crystals Synth.wav')
-const Vox = require('../Tonal - Audio/Tonal - Stop And Go Vox.wav')
+import React, { Component } from "react";
+import "./Soundboard.css";
+import Tone from "tone";
+const Drum = require("../Tonal - Audio/Tonal - Acoustic Layers Beat 02.wav");
+const BeachSynth = require("../Tonal - Audio/Tonal - Beach Run Synth.wav");
+const IcySynth = require("../Tonal - Audio/Tonal - Icy Crystals Synth.wav");
+const Vox = require("../Tonal - Audio/Tonal - Stop And Go Vox.wav");
 
 class Soundboard extends Component {
     constructor () {
@@ -120,15 +120,40 @@ class Soundboard extends Component {
 
     componentDidMount () {
     }
+  };
 
-    componentWillMount = () => {
-        Tone.Buffer.on('load', () => {
-            this.state.drums.start()
-            this.state.beach.start()
-            this.state.icy.start()
-            this.state.vox.start()
-        })
+  handleMouseLeave = inst => {
+    this.mountainInput.current.classList.add("Blink");
+    this.skyInput.current.classList.add("Blink");
+    this.setState({ blink: true });
+    if (inst === "drum") {
+      this.mountainInput.current.classList.remove("hover");
+    } else if (inst === "beach") {
+      this.skyInput.current.classList.remove("hover");
+    } else if (inst === "icy") {
+    } else {
     }
+  };
+
+  componentDidMount() {
+    console.log(
+      window
+        .getComputedStyle(
+          document.getElementById("BeachSynth"),
+          "::-webkit-slider-thumb"
+        )
+        .getPropertyValue("y-index")
+    );
+  }
+
+  componentWillMount = () => {
+    Tone.Buffer.on("load", () => {
+      this.state.drums.start();
+      this.state.beach.start();
+      this.state.icy.start();
+      this.state.vox.start();
+    });
+  };
 
     handleChange = (inst, val, min, max) => {
         if (inst === 'drum') {
@@ -143,73 +168,119 @@ class Soundboard extends Component {
             this.state.vox.volume.value = val
         }
     }
+  };
 
-    changeDay = (val, min, max) => {
-        var newMin = parseInt(min)
-        var newMax = parseInt(max)
-        var newVal = parseInt(val)
-        var percentage = ((newVal - newMin) * 100) / (newMax - newMin)
-        if (percentage <= 5) {
-            this.HourTwo.current.style.opacity = 0.1
-        } else if (percentage <= 10) {
-            this.HourTwo.current.style.opacity = 0.2
-        } else if (percentage <= 15) {
-            this.HourTwo.current.style.opacity = 0.3
-        } else if (percentage <= 20) {
-            this.HourTwo.current.style.opacity = 0.4
-        } else if (percentage <= 25) {
-            this.HourTwo.current.style.opacity = 0.5
-        } else if (percentage <= 30) {
-            this.HourTwo.current.style.opacity = 0.6
-        } else if (percentage <= 35) {
-            this.HourTwo.current.style.opacity = 0.7
-        } else if (percentage <= 40) {
-            this.HourTwo.current.style.opacity = 0.8
-        } else if (percentage <= 45) {
-            this.HourTwo.current.style.opacity = 0.9
-        } else if (percentage <= 50) {
-            this.HourTwo.current.style.opacity = 1
-        } else if (percentage <= 55) {
-            this.HourThree.current.style.opacity = 0.1
-        } else if (percentage <= 60) {
-            this.HourThree.current.style.opacity = 0.2
-        } else if (percentage <= 65) {
-            this.HourThree.current.style.opacity = 0.3
-        } else if (percentage <= 70) {
-            this.HourThree.current.style.opacity = 0.4
-        } else if (percentage <= 75) {
-            this.HourThree.current.style.opacity = 0.5
-        } else if (percentage <= 80) {
-            this.HourThree.current.style.opacity = 0.6
-        } else if (percentage <= 85) {
-            this.HourThree.current.style.opacity = 0.7
-        } else if (percentage <= 90) {
-            this.HourThree.current.style.opacity = 0.8
-        } else if (percentage <= 95) {
-            this.HourThree.current.style.opacity = 0.9
-        } else {
-            this.HourThree.current.style.opacity = 1
-        }
-        this.skyInput.current.classList.add('hover')
+  changeDay = (val, min, max) => {
+    var newMin = parseInt(min);
+    var newMax = parseInt(max);
+    var newVal = parseInt(val);
+    var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
+    if (percentage <= 5) {
+      this.HourTwo.current.style.opacity = 0.1;
+    } else if (percentage <= 10) {
+      this.HourTwo.current.style.opacity = 0.2;
+    } else if (percentage <= 15) {
+      this.HourTwo.current.style.opacity = 0.3;
+    } else if (percentage <= 20) {
+      this.HourTwo.current.style.opacity = 0.4;
+    } else if (percentage <= 25) {
+      this.HourTwo.current.style.opacity = 0.5;
+    } else if (percentage <= 30) {
+      this.HourTwo.current.style.opacity = 0.6;
+    } else if (percentage <= 35) {
+      this.HourTwo.current.style.opacity = 0.7;
+    } else if (percentage <= 40) {
+      this.HourTwo.current.style.opacity = 0.8;
+    } else if (percentage <= 45) {
+      this.HourTwo.current.style.opacity = 0.9;
+    } else if (percentage <= 50) {
+      this.HourTwo.current.style.opacity = 1;
+    } else if (percentage <= 55) {
+      this.HourThree.current.style.opacity = 0.1;
+    } else if (percentage <= 60) {
+      this.HourThree.current.style.opacity = 0.2;
+    } else if (percentage <= 65) {
+      this.HourThree.current.style.opacity = 0.3;
+    } else if (percentage <= 70) {
+      this.HourThree.current.style.opacity = 0.4;
+    } else if (percentage <= 75) {
+      this.HourThree.current.style.opacity = 0.5;
+    } else if (percentage <= 80) {
+      this.HourThree.current.style.opacity = 0.6;
+    } else if (percentage <= 85) {
+      this.HourThree.current.style.opacity = 0.7;
+    } else if (percentage <= 90) {
+      this.HourThree.current.style.opacity = 0.8;
+    } else if (percentage <= 95) {
+      this.HourThree.current.style.opacity = 0.9;
+    } else {
+      this.HourThree.current.style.opacity = 1;
     }
+    this.skyInput.current.classList.add("hover");
+  };
 
-    findPercentage = (val, min, max) => {
-        var newMin = parseInt(min)
-        var newMax = parseInt(max)
-        var newVal = parseInt(val)
-        var percentage = ((newVal - newMin) * 100) / (newMax - newMin)
-        if (percentage <= 5) {
-            percentage = 5
-        }
-        this.setState({ drumPercent : 100-percentage })
-        this.mountainInput.current.classList.add('hover')
+  findPercentage = (val, min, max) => {
+    var newMin = parseInt(min);
+    var newMax = parseInt(max);
+    var newVal = parseInt(val);
+    var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
+    if (percentage <= 5) {
+      percentage = 5;
     }
+    this.setState({ drumPercent: 100 - percentage });
+    this.mountainInput.current.classList.add("hover");
+  };
 
+  render() {
+    return (
+      <div>
+        <div id="background-wrap">
+          <div
+            class="x1"
+            style={
+              this.state.icy.volume.value < -30
+                ? {
+                    webkitAnimation: `animateCloud ${
+                      this.slow.speed
+                    }s linear infinite`,
+                    mozAnimation: "animateCloud 90s linear infinite",
+                    animation: "animateCloud 90s linear infinite",
 
-    render() {
-        return (
-        <div className="SoundboardBody" ref={this.SoundboardBody}  onClick={this.handleClick} >
-            {/* <div className="SliderContainer" >
+                    webkitTransform: `scale(${this.slow.size})`,
+                    mozTransform: "scale(0.4)",
+                    transform: "scale(0.4)"
+                  }
+                : {
+                    webkitAnimation: "animateCloud 45s linear infinite",
+                    mozAnimation: "animateCloud 45s linear infinite",
+                    animation: "animateCloud 45s linear infinite",
+                    webkitTransform: "scale(0.65)",
+                    mozTransform: "scale(0.65)",
+                    transform: "scale(0.65)"
+                  }
+            }
+          >
+            <div class="cloud" />
+          </div>
+
+          <div class="x2">
+            <div class="cloud" />
+          </div>
+
+          <div class="x3">
+            <div class="cloud" />
+          </div>
+
+          <div class="x4">
+            <div class="cloud" />
+          </div>
+
+          {/* <div class="x5">
+            <div class="cloud" />
+          </div> */}
+        </div>
+        <div className="SoundboardBody" ref={this.SoundboardBody}>
+          {/* <div className="SliderContainer" >
                 <div className="IndividualSliderContainer" >
                 Backing Synth
                 <input className="" type="range" min="-30" max="4" defaultValue='-10' onInput={(e) => this.handleChange('icy', e.target.value)} />
@@ -219,10 +290,9 @@ class Soundboard extends Component {
                 <input className="" type="range" min="-30" max="3" defaultValue='-5' onInput={(e) => this.handleChange('vox', e.target.value)} />
                 </div>
             </div> */}
+          <div ref={this.HourTwo} className="backgroundSecondHour" />
+          <div ref={this.HourThree} className="backgroundThirdHour" />
 
-            <div ref={this.HourTwo} className="backgroundSecondHour" ></div>
-            <div ref={this.HourThree} className="backgroundThirdHour" ></div>
-            
             {/* Drums */}
             <div className="bkgMount" ></div>
             <div className="Mountain" style={{'clip-path' : `polygon(50% ${this.state.drumPercent}%, 0 100%, 100% 100%)`}} ></div>
@@ -238,9 +308,33 @@ class Soundboard extends Component {
 
             {this.starCounter()}
 
+          {/* { Icy Synth } */}
+          <div
+            className="IcyGrabber"
+            onMouseEnter={() => this.handleMouseEnter("icy")}
+            onMouseLeave={() => this.handleMouseLeave("icy")}
+          />
+          <input
+            ref={this.icyInput}
+            className="VolumeSlider Blink"
+            id="IcySynth"
+            type="range"
+            min="-45"
+            max="6"
+            defaultValue="-10"
+            onInput={e =>
+              this.handleChange(
+                "Icy",
+                e.target.value,
+                e.target.min,
+                e.target.max
+              )
+            }
+          />
         </div>
-        );
-    }
+      </div>
+    );
+  }
 }
 
 export default Soundboard;
