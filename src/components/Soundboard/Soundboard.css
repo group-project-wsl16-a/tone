@@ -204,11 +204,35 @@
   transition: 0.3s;
 }
 
-.Blink::-webkit-slider-thumb {
-  clip-path: polygon(55% 0, 80% 50%, 55% 100%, 45% 100%, 25% 50%, 45% 0);
-  transform: rotate(270deg);
-  border: 4px black solid;
-  opacity: 0.1;
+.star {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    background: white;
+    position: absolute;
+    transition: .5s;
+    transform-origin: center;
+    animation-duration: 1s;
+    animation-name: blink;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes blink {
+    0% {clip-path: polygon(15% 50%, 40% 40%, 50% 0%, 60% 40%, 85% 50%, 60% 60%, 50% 100%, 40% 60%)}
+    100% {clip-path: polygon(0% 50%, 40% 40%, 50% 15%, 60% 40%, 100% 50%, 60% 60%, 50% 85%, 40% 60%);}
+}
+
+.hovered {
+    transform: scale(1.5)
+}
+
+.Blink::-webkit-slider-thumb{
+    clip-path: polygon(55% 0, 80% 50%, 55% 100%, 45% 100%, 25% 50%, 45% 0);
+    transform: rotate(270deg);
+    border: 4px black solid;
+    opacity: 0.3;
 }
 
 .VolumeSlider:focus {
@@ -280,37 +304,11 @@
 }
 
 .bkgMount {
-  background: rgb(0, 0, 60);
-  width: 100vw;
-  height: 250px;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  clip-path: polygon(
-    0% 100%,
-    0% 20%,
-    2% 10%,
-    5% 25%,
-    6% 38%,
-    8% 45%,
-    10% 30%,
-    15% 20%,
-    18% 45%,
-    24% 60%,
-    30% 50%,
-    35% 80%,
-    40% 88%,
-    45% 80%,
-    55% 30%,
-    59% 55%,
-    65% 46%,
-    68% 30%,
-    75% 50%,
-    85% 54%,
-    86% 60%,
-    90% 72%,
-    93% 80%,
-    100% 20%,
-    100% 100%
-  );
+    background: rgb(0, 0, 60);
+    width: 100vw;
+    height: 250px;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    clip-path: polygon(0% 100%, 0% 20%, 2% 10%, 5% 25%, 6% 38%, 8% 45%, 10% 30%, 15% 20%, 18% 45%, 24% 60%, 30% 50%, 35% 80%, 40% 50%, 47% 65%, 49% 75%, 52% 60%,55% 20%, 59% 44%, 63% 55%,65% 46%, 68% 30%, 75% 50%, 85% 54%, 86% 60%, 90% 72%, 93% 80%, 100% 20%, 100% 100%);
 }
