@@ -10,12 +10,12 @@ class Soundboard extends Component {
   constructor() {
     super();
 
-        this.mountainInput = React.createRef();
-        this.skyInput = React.createRef();
-        this.SoundboardBody = React.createRef();
-        this.HourTwo = React.createRef();
-        this.HourThree = React.createRef();
-        this.icyInput = React.createRef();
+    this.mountainInput = React.createRef();
+    this.skyInput = React.createRef();
+    this.SoundboardBody = React.createRef();
+    this.HourTwo = React.createRef();
+    this.HourThree = React.createRef();
+    this.icyInput = React.createRef();
 
     this.slow = {
       speed: 80,
@@ -30,13 +30,10 @@ class Soundboard extends Component {
       speed: 68,
       size: 0.5
     };
-    this.slow3 = {
-      speed: 40,
-      size: 0.4
-    };
 
     this.state = {
       synth: new Tone.Synth().toMaster(),
+      star: [],
       drums: new Tone.Player({
         url: Drum,
         loop: true,
@@ -61,13 +58,50 @@ class Soundboard extends Component {
     };
   }
 
-  handleClick = () => {
-    this.state.drums.stop();
-    this.state.beach.stop();
-    this.state.icy.stop();
-    this.state.vox.stop();
-  };
+  handleClick = (e) => {
+    this.setState({ star: this.state.star.concat({x : e.pageX, y : e.pageY}) });
+    console.log('coords', e.pageX, e.pageY)
+    // this.state.drums.stop()
+    // this.state.beach.stop()
+    // this.state.icy.stop()
+    // this.state.vox.stop()
+    }
 
+    removeStar = (e, i) => {
+        this.setState({ star : this.state.star.filter((star, index) => {
+            return i !== index
+        }) })
+        e.preventDefault()
+        e.stopPropagation()
+    }
+
+    starCounter = () => {
+        var count = this.state.star.length
+        if (count > 9) {
+            this.state.vox.volume.value = 3
+        } else if (count === 9) {
+            this.state.vox.volume.value = 1.5
+        } else if (count === 8) {
+            this.state.vox.volume.value = 0
+        } else if (count === 7) {
+            this.state.vox.volume.value = -3
+        } else if (count === 6) {
+            this.state.vox.volume.value = -5
+        } else if (count === 5) {
+            this.state.vox.volume.value = -7
+        } else if (count === 4) {
+            this.state.vox.volume.value = -10
+        } else if (count === 3) {
+            this.state.vox.volume.value = -15
+        } else if (count === 2) {
+            this.state.vox.volume.value = -20
+        } else if (count === 1) {
+            this.state.vox.volume.value = -25
+        } else {
+            this.state.vox.volume.value = -30
+        }
+    }
+    
     handleMouseEnter = (inst, i) => {
         this.mountainInput.current.classList.remove('Blink')
         this.skyInput.current.classList.remove('Blink')
@@ -110,18 +144,18 @@ class Soundboard extends Component {
   };
 
   handleChange = (inst, val, min, max) => {
-    this.setState({ blink: false });
-    if (inst === "drum") {
-      this.state.drums.volume.value = val;
-      this.findPercentage(val, min, max);
-    } else if (inst === "beach") {
-      this.state.beach.volume.value = val;
-      this.changeDay(val, min, max);
-    } else if (inst === "Icy") {
-      console.log("asdklfjads", this.state.icy.volume.value);
-      this.state.icy.volume.value = val;
-    } else {
-      this.state.vox.volume.value = val;
+        if (inst === "drum") {
+        this.state.drums.volume.value = val;
+        this.findPercentage(val, min, max);
+        } else if (inst === "beach") {
+        this.state.beach.volume.value = val;
+        this.changeDay(val, min, max);
+        } else if (inst === "Icy") {
+        console.log("asdklfjads", this.state.icy.volume.value);
+        this.state.icy.volume.value = val;
+        } else {
+        this.state.vox.volume.value = val;
+        }
     }
 
   changeDay = (val, min, max) => {
@@ -189,80 +223,55 @@ class Soundboard extends Component {
     return (
       <div>
         <div className="SoundboardBody" ref={this.SoundboardBody} onClick={this.handleClick}>
-        <div ref={this.HourTwo} className="backgroundSecondHour" />
-        <div ref={this.HourThree} className="backgroundThirdHour" />
-        <div id="background-wrap">
-          <div
-            className="cloud"
-            style={
-              this.state.icy.volume.value < -10
-                ? {
-                    animation: `animateCloud ${
-                      this.slow.speed
-                    } linear infinite`,
-                    transform: `scale(${this.slow.size})`
-                  }
-                : {
-                    animation: "animateCloud 50s linear infinite",
-                    transform: "scale(0.75)"
-                  }
-            }
-          />
+            <div ref={this.HourTwo} className="backgroundSecondHour" />
+            <div ref={this.HourThree} className="backgroundThirdHour" />
+            <div id="background-wrap">
+                <div className="cloud" style={
+                    this.state.icy.volume.value < -10
+                        ? {
+                            animation: `animateCloud ${
+                            this.slow.speed
+                            } linear infinite`,
+                            transform: `scale(${this.slow.size})`
+                        }
+                        : {
+                            animation: "animateCloud 50s linear infinite",
+                            transform: "scale(0.75)"
+                        }
+                    }
+                />
 
-          <div
-            className="cloud"
-            style={
-              this.state.icy.volume.value < -10
-                ? {
-                    animation: `animateCloud ${
-                      this.slow1.speed
-                    } linear infinite`,
-                    transform: `scale(${this.slow1.size})`
-                  }
-                : {
-                    animation: "animateCloud 35s linear infinite",
-                    transform: "scale(0.45)"
-                  }
-            }
-          />
+                <div className="cloud" style={ 
+                    this.state.icy.volume.value < -10
+                        ? {
+                            animation: `animateCloud ${
+                            this.slow1.speed
+                            } linear infinite`,
+                            transform: `scale(${this.slow1.size})`
+                        }
+                        : {
+                            animation: "animateCloud 35s linear infinite",
+                            transform: "scale(0.45)"
+                        }
+                    }
+                />
 
-          <div
-            className="cloud"
-            style={
-              this.state.icy.volume.value < -10
-                ? {
-                    animation: `animateCloud ${
-                      this.slow2.speed
-                    } linear infinite`,
-                    transform: `scale(${this.slow2.size})`
-                  }
-                : {
-                    animation: "animateCloud 42s linear infinite",
-                    transform: "scale(0.65)"
-                  }
-            }
-          />
+                <div className="cloud" style={ 
+                    this.state.icy.volume.value < -10
+                        ? {
+                            animation: `animateCloud ${
+                            this.slow2.speed
+                            } linear infinite`,
+                            transform: `scale(${this.slow2.size})`
+                        }
+                        : {
+                            animation: "animateCloud 42s linear infinite",
+                            transform: "scale(0.65)"
+                        }
+                    }
+                />
 
-          <div
-            className="cloud"
-            style={
-              this.state.icy.volume.value < -10
-                ? {
-                    animation: `animateCloud ${
-                      this.slow3.speed
-                    } linear infinite`,
-                    transform: `scale(${this.slow3.size})`
-                  }
-                : {
-                    animation: "animateCloud 28s linear infinite",
-                    transform: "scale(0.55)"
-                  }
-            }
-          />
-        </div>
-        <div className="SoundboardBody" ref={this.SoundboardBody}>
-          <div ref={this.HourTwo} className="backgroundSecondHour" />
-          <div ref={this.HourThree} className="backgroundThirdHour" />
+                </div>
 
                 {/* Drums */}
                 <div className="bkgMount" ></div>
@@ -275,12 +284,13 @@ class Soundboard extends Component {
                 {/* Icy Synth */}
                 <div className="IcyGrabber" onMouseEnter={() => this.handleMouseEnter("icy")} onMouseLeave={() => this.handleMouseLeave("icy")}/></div>
                 <input ref={this.icyInput} className="VolumeSlider Blink" id="IcySynth" type="range" min="-45" max="6" defaultValue="-10" onMouseEnter={() => this.handleMouseEnter('icy')} onInput={e => this.handleChange("Icy",e.target.value,e.target.min,e.target.max)} />
-                
+                {/* Stars */}
                 {this.state.star.map((star, i) =>
                     <div key={i} className="star" id={i} style={{ 'left' : `${star.x - 25}px`, 'top' : `${star.y - 25}px`}} onMouseEnter={() => this.handleMouseEnter('star', i)} onMouseLeave={() => this.handleMouseLeave('star', i)} onClick={(e) => this.removeStar(e, i)}></div>
                 )}
                 {this.starCounter()}
-        </div>
+
+            </div>
         );
     }
 }
