@@ -17,8 +17,21 @@ class Soundboard extends Component {
     this.HourThree = React.createRef();
 
     this.slow = {
-      speed: 90,
+      speed: 80,
+      size: 0.6
+    };
+
+    this.slow1 = {
+      speed: 55,
+      size: 0.3
+    };
+    this.slow2 = {
+      speed: 68,
       size: 0.5
+    };
+    this.slow3 = {
+      speed: 40,
+      size: 0.4
     };
 
     this.state = {
@@ -181,62 +194,74 @@ class Soundboard extends Component {
       <div>
         <div id="background-wrap">
           <div
-            class="x1"
+            className="cloud"
             style={
-              this.state.icy.volume.value < -30
+              this.state.icy.volume.value < -10
                 ? {
-                    webkitAnimation: `animateCloud ${
+                    animation: `animateCloud ${
                       this.slow.speed
-                    }s linear infinite`,
-                    mozAnimation: "animateCloud 90s linear infinite",
-                    animation: "animateCloud 90s linear infinite",
-
-                    webkitTransform: `scale(${this.slow.size})`,
-                    mozTransform: "scale(0.4)",
-                    transform: "scale(0.4)"
+                    } linear infinite`,
+                    transform: `scale(${this.slow.size})`
                   }
                 : {
-                    webkitAnimation: "animateCloud 45s linear infinite",
-                    mozAnimation: "animateCloud 45s linear infinite",
-                    animation: "animateCloud 45s linear infinite",
+                    animation: "animateCloud 50s linear infinite",
+                    transform: "scale(0.75)"
+                  }
+            }
+          />
 
-                    webkitTransform: "scale(0.65)",
-                    mozTransform: "scale(0.65)",
+          <div
+            className="cloud"
+            style={
+              this.state.icy.volume.value < -10
+                ? {
+                    animation: `animateCloud ${
+                      this.slow1.speed
+                    } linear infinite`,
+                    transform: `scale(${this.slow1.size})`
+                  }
+                : {
+                    animation: "animateCloud 32s linear infinite",
+                    transform: "scale(0.45)"
+                  }
+            }
+          />
+
+          <div
+            className="cloud"
+            style={
+              this.state.icy.volume.value < -10
+                ? {
+                    animation: `animateCloud ${
+                      this.slow2.speed
+                    } linear infinite`,
+                    transform: `scale(${this.slow2.size})`
+                  }
+                : {
+                    animation: "animateCloud 40s linear infinite",
                     transform: "scale(0.65)"
                   }
             }
-          >
-            <div class="cloud" />
-          </div>
+          />
 
-          <div class="x2">
-            <div class="cloud" />
-          </div>
-
-          <div class="x3">
-            <div class="cloud" />
-          </div>
-
-          <div class="x4">
-            <div class="cloud" />
-          </div>
-
-          {/* <div class="x5">
-            <div class="cloud" />
-          </div> */}
+          <div
+            className="cloud"
+            style={
+              this.state.icy.volume.value < -10
+                ? {
+                    animation: `animateCloud ${
+                      this.slow3.speed
+                    } linear infinite`,
+                    transform: `scale(${this.slow3.size})`
+                  }
+                : {
+                    animation: "animateCloud 25s linear infinite",
+                    transform: "scale(0.55)"
+                  }
+            }
+          />
         </div>
         <div className="SoundboardBody" ref={this.SoundboardBody}>
-          {/* <div className="SliderContainer" >
-                <div className="IndividualSliderContainer" >
-                    Backing Synth
-                    <input className="" type="range" min="-30" max="4" defaultValue='-10' onInput={(e) => this.handleChange('icy', e.target.value)} />
-                </div>
-                <div className="IndividualSliderContainer" >
-                    Ambiance
-                    <input className="" type="range" min="-30" max="3" defaultValue='-5' onInput={(e) => this.handleChange('vox', e.target.value)} />
-                </div>
-            </div> */}
-
           <div ref={this.HourTwo} className="backgroundSecondHour" />
           <div ref={this.HourThree} className="backgroundThirdHour" />
 
