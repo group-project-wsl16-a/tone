@@ -221,7 +221,7 @@ class Soundboard extends Component {
                     transform: `scale(${this.slow1.size})`
                   }
                 : {
-                    animation: "animateCloud 32s linear infinite",
+                    animation: "animateCloud 35s linear infinite",
                     transform: "scale(0.45)"
                   }
             }
@@ -238,7 +238,7 @@ class Soundboard extends Component {
                     transform: `scale(${this.slow2.size})`
                   }
                 : {
-                    animation: "animateCloud 40s linear infinite",
+                    animation: "animateCloud 42s linear infinite",
                     transform: "scale(0.65)"
                   }
             }
@@ -255,7 +255,7 @@ class Soundboard extends Component {
                     transform: `scale(${this.slow3.size})`
                   }
                 : {
-                    animation: "animateCloud 25s linear infinite",
+                    animation: "animateCloud 28s linear infinite",
                     transform: "scale(0.55)"
                   }
             }
