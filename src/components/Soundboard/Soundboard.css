@@ -83,19 +83,20 @@
 }
 
 #background-wrap {
-  top: 150px;
+  top: 140px;
   width: 99.9vw;
-  height: 300px;
+  height: 450px;
   position: fixed;
   display: flex;
   flex-direction: column;
+  /* border: 1px white solid; */
 }
 
 /* KEYFRAMES */
 
 @keyframes animateBigCloud {
   0% {
-    left: -1100px
+    left: -1850px
   }
   100% {
     left: 1500px
@@ -123,10 +124,10 @@
 }
 
 .cloudOne {
-  width: 1400px;
-  height: 220px;
-  left: -1100px;
-  animation: animateBigCloud 70s linear infinite;
+  width: 2500px;
+  height: 350px;
+  left: -2500px;
+  animation: animateBigCloud 130s linear infinite;
   animation-delay: 4.5s
 }
 
