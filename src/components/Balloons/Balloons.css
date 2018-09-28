@@ -1,9 +1,9 @@
 .BalloonsBody {
-    z-index: 50;
+    z-index: 1;
     display: flex;
     position: absolute;
     left: 0px;
-    height: 200px;
+    height: 150px;
 }
 
 .BalloonsBody img {
