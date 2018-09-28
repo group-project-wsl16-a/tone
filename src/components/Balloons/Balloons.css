@@ -1,0 +1,29 @@
+.BalloonsBody {
+    z-index: 50;
+    display: flex;
+    position: absolute;
+    left: 0px;
+    height: 200px;
+}
+
+.BalloonsBody img {
+    height: 100px;
+    width: auto;
+    margin: 20px;
+}
+
+.MenuBalloon {
+    margin-right: 0px !important;
+    animation: BalloonFloat 1.5s ease-in-out alternate-reverse infinite;
+    position: relative;
+}
+
+.RecordBalloon {
+    animation: BalloonFloat 1.3s ease-in-out alternate infinite;
+    position: relative;
+}
+
+@keyframes BalloonFloat {
+    0% {top: 0px}
+    100% {top: 25px}
+}
