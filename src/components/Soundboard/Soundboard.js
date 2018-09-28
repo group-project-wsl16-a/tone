@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Soundboard.css";
 import Tone from "tone";
+import Balloons from '../Balloons/Balloons';
 const Drum = require("../Tonal - Audio/Tonal - Acoustic Layers Beat 02.wav");
 const BeachSynth = require("../Tonal - Audio/Tonal - Beach Run Synth.wav");
 const IcySynth = require("../Tonal - Audio/Tonal - Icy Crystals Synth.wav");
@@ -339,7 +340,6 @@ class Soundboard extends Component {
     return (
       <div>
         <div className="SoundboardBody" ref={this.SoundboardBody} onClick={this.handleClick}>
-
             <div ref={this.HourTwo} className="backgroundSecondHour" />
             <div ref={this.HourThree} className="backgroundThirdHour" />
             <div id="background-wrap">
@@ -358,6 +358,8 @@ class Soundboard extends Component {
                     </g>
                 </svg>
             </div>
+
+            <Balloons />
 
             {/* Drums */}
             <div className="Mountain" style={{'clip-path' : `polygon(50% ${this.state.drumPercent}%, 0 100%, 100% 100%)`}} ></div>

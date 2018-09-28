@@ -117,10 +117,10 @@
 .cloud {
   position: relative;
   fill: transparent;
-  stroke: black;
+  stroke: rgb(162, 162, 162);
   stroke-width: 1px;
   transition: .2s;
-  fill: rgb(196, 196, 196);
+  fill: rgb(158, 158, 158);
 }
 
 .cloudOne {
