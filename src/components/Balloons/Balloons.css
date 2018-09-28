@@ -12,15 +12,25 @@
     margin: 20px;
 }
 
+.MenuBalloon:hover {
+    transform: scale(1.3)
+}
+
+.RecordBalloon:hover {
+    transform: scale(1.3)
+}
+
 .MenuBalloon {
     margin-right: 0px !important;
     animation: BalloonFloat 1.5s ease-in-out alternate-reverse infinite;
     position: relative;
+    transition: .8s;
 }
 
 .RecordBalloon {
     animation: BalloonFloat 1.3s ease-in-out alternate infinite;
     position: relative;
+    transition: .8s;
 }
 
 @keyframes BalloonFloat {
