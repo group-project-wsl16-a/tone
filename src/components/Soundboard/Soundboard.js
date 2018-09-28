@@ -350,7 +350,7 @@ class Soundboard extends Component {
                     </div>
 
                     {/* Drums */}
-                    <div className="Mountain" style={{'clip-path' : `polygon(50% ${this.state.drumPercent}%, 0 100%, 100% 100%)`}} ></div>
+                    <div className="Mountain" style={{'clipPath' : `polygon(50% ${this.state.drumPercent}%, 0 100%, 100% 100%)`}} ></div>
                     <div className="DrumGrabber" onMouseEnter={() => this.handleMouseEnter('drum')} onMouseLeave={() => this.handleMouseLeave('drum')} ></div>
                     <input ref={this.mountainInput} className="VolumeSlider Blink" id="DrumSlider" type="range" min="-25" max="10" defaultValue='-10' onMouseEnter={() => this.handleMouseEnter('drum')} onInput={(e) => this.handleChange('drum', e.target.value, e.target.min, e.target.max)} />
                     
