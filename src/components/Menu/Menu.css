@@ -5,9 +5,22 @@
     position: absolute;
     top: 0px;
     left: 15%;
-  }
+}
   
-  .HiddenMenu {
+.MenuHandle {
+    height: 20px;
+    width: 20px;
+    background: transparent;
+    border: 3px transparent solid;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transition: ease-in-out .5s;
+    cursor: pointer;
+}
+
+.HiddenMenu {
     height: 100px;
     width: 100vw;
     background: grey;
@@ -20,17 +33,32 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
-  }
-  
-  .MenuHandle {
-    height: 20px;
-    width: 20px;
-    background: transparent;
-    border: 3px transparent solid;
-    border-radius: 50%;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transition: ease-in-out .5s;
+}
+
+.MenuItem {
+    height: 90px;
+    width: 100px;
+    /* border: white 1px solid; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
     cursor: pointer;
-  }
+}
+
+.EnvironmentImage {
+    height: 70%;
+    width: 100%;
+    /* border: white 1px solid; */
+    background: blue;
+}
+
+.EnvironmentText {
+    height: 30%;
+    width: 100%;
+    font-size: 13px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    bottom: -10px;
+}
