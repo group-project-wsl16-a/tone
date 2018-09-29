@@ -15,9 +15,10 @@ export class Balloons extends Component {
         }
     }
 
-    render () {
+    render (props) {
         return (
             <div className='BalloonsBody' >
+                {/* {console.log(props)} */}
                 <img className="MenuBalloon" src={require('./Menu-Balloon.png')} onClick={() => this.handleClick('menu')} alt="World View Balloon" />
                 <img className="RecordBalloon" src={require('./Record-Balloon.png')} onClick={() => this.handleClick('record')} alt="Record Song Balloon" />
             </div>
