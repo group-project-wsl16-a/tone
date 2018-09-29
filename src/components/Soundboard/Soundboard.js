@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./Soundboard.css";
 import Tone from "tone";
 import Balloons from '../Balloons/Balloons';
+import HiddenMenu from '../Menu/Menu';
 const Drum = require("../Tonal - Audio/Tonal - Acoustic Layers Beat 02.wav");
 const BeachSynth = require("../Tonal - Audio/Tonal - Beach Run Synth.wav");
 const IcySynth = require("../Tonal - Audio/Tonal - Icy Crystals Synth.wav");
@@ -19,9 +20,6 @@ class Soundboard extends Component {
         this.icyInput = React.createRef();
         this.CloudOne = React.createRef();
         this.CloudTwo = React.createRef();
-        this.menuHandle = React.createRef();
-        this.hiddenMenu = React.createRef();
-        this.menuGrabber = React.createRef();
 
         this.state = {
             synth: new Tone.Synth().toMaster(),
@@ -52,34 +50,26 @@ class Soundboard extends Component {
                 fadeIn: "7s",
                 volume: '-5',
                 }).toMaster(),
-            menu: false,
+            volumes: {},
         };
     }
 
+    changeVolumes = () => {
+        var drumVol = this.state.drums.volume.value
+        var beachVol = this.state.beach.volume.value
+        var icyVol = this.state.icy.volume.value
+        var voxVol = this.state.vox.volume.value
+
+        this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: voxVol} })
+    }
+
     handleClick = (type, e) => {
-        if (type === 'star') {
-            this.setState({ star: this.state.star.concat({x : e.pageX, y : e.pageY}) });
-            console.log('coords', e.pageX, e.pageY)
-        } else if (type === 'menu') {
-            this.openMenu(!this.state.menu)
-            this.setState({ menu : !this.state.menu})
-        } else {}
+        this.setState({ star: this.state.star.concat({x : e.pageX, y : e.pageY}) });
+        this.changeVolumes()
         // this.state.drums.stop()
         // this.state.beach.stop()
         // this.state.icy.stop()
         // this.state.vox.stop()
-    }
-
-    openMenu = (val) => {
-        if (val === true) {
-            this.hiddenMenu.current.style.top = '0' 
-            this.menuHandle.current.style.top = '110px' 
-            this.menuGrabber.current.style.top = '100px'
-        } else {
-            this.hiddenMenu.current.style.top = '-100px' 
-            this.menuHandle.current.style.top = '10px' 
-            this.menuGrabber.current.style.top = '0px'
-        }
     }
 
     removeStar = (e, i) => {
@@ -130,7 +120,6 @@ class Soundboard extends Component {
         } else if (inst === 'icy') {
             this.icyInput.current.classList.add('hover')
         } else {
-            this.menuHandle.current.style.border = 'white 2px solid' 
         }
     }
 
@@ -147,7 +136,6 @@ class Soundboard extends Component {
         } else if (inst === 'icy') {
             this.icyInput.current.classList.remove('hover')
         } else {
-            this.menuHandle.current.style.border = 'none' 
         }
     }
 
@@ -173,6 +161,7 @@ class Soundboard extends Component {
         } else {
         this.state.vox.volume.value = val;
         }
+        this.changeVolumes()
     }
 
     changeDay = (val, min, max) => {
@@ -321,14 +310,13 @@ class Soundboard extends Component {
         var newMax = parseInt(max);
         var newVal = parseInt(val);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
-        console.log(document.getElementsByClassName('cloud').style)
         this.setState({ cloudSize: percentage/100 })
     }
 
     render() {
         return (
             <div>
-                <Balloons />
+                <Balloons volumes={this.state.volumes} />
                 <div className="SoundboardBody" ref={this.SoundboardBody} onClick={(e) => this.handleClick('star', e)}>
                     <div ref={this.HourTwo} className="backgroundSecondHour" />
                     <div ref={this.HourThree} className="backgroundThirdHour" />
@@ -372,13 +360,7 @@ class Soundboard extends Component {
                     {this.starCounter()}
 
                 </div>
-                <div ref={this.menuGrabber} className="MenuGrabber" onMouseEnter={() => this.handleMouseEnter('menu')} onMouseLeave={() => this.handleMouseLeave('menu')} ></div>
-                <div ref={this.menuHandle} className="MenuHandle" onMouseEnter={() => this.handleMouseEnter('menu')} onClick={() => this.handleClick('menu')} ></div>
-                <div ref={this.hiddenMenu} className="HiddenMenu" >
-                    this
-                    <p>is a</p>
-                    <h1>test</h1>
-                </div>
+                <HiddenMenu />
             </div>
         );
     }
