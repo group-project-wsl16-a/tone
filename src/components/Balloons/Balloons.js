@@ -10,17 +10,20 @@ export class Balloons extends Component {
     handleClick = (type) => {
         if (type === 'menu') {
             this.props.history.push('/worldview')
-        } else {
+        } else if (type === 'record') {
 
+        } else {
+            window.location.reload()
         }
     }
 
     render (props) {
+        console.log(this.props)
         return (
             <div className='BalloonsBody' >
-                {/* {console.log(props)} */}
                 <img className="MenuBalloon" src={require('./Menu-Balloon.png')} onClick={() => this.handleClick('menu')} alt="World View Balloon" />
                 <img className="RecordBalloon" src={require('./Record-Balloon.png')} onClick={() => this.handleClick('record')} alt="Record Song Balloon" />
+                <img className="ResetBalloon" src={require('./Reset-Balloon.png')} onClick={() => this.handleClick('reset')} alt="Reset Balloon" />
             </div>
         )
     }

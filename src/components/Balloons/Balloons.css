@@ -10,6 +10,7 @@
     height: 100px;
     width: auto;
     margin: 20px;
+    margin-right: 0px !important;
 }
 
 .MenuBalloon:hover {
@@ -21,7 +22,6 @@
 }
 
 .MenuBalloon {
-    margin-right: 0px !important;
     animation: BalloonFloat 1.5s ease-in-out alternate-reverse infinite;
     position: relative;
     transition: .8s;
@@ -29,6 +29,13 @@
 
 .RecordBalloon {
     animation: BalloonFloat 1.3s ease-in-out alternate infinite;
+    position: relative;
+    transition: .8s;
+}
+
+
+.ResetBalloon {
+    animation: BalloonFloat 2.3s ease-in-out alternate infinite;
     position: relative;
     transition: .8s;
 }
