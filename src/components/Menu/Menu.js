@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './Menu.css';
 import { withRouter } from 'react-router';
-import Soundboard from '../Soundboard/Soundboard'
 
 export class HiddenMenu extends Component {
     constructor (props) {
@@ -16,10 +15,18 @@ export class HiddenMenu extends Component {
         }
     }
 
+    refresh = () => {
+        window.location.reload()
+    }
+
     handleClick = (type) => {
         if (type === 'MountainRange') {
+            this.refresh()
             this.props.history.push('/')
-        } else {}
+        } else if (type === 'Mines') {
+            this.refresh()
+            this.props.history.push('/mines')
+        }
     }
 
     handleMouseEnter = () => {
@@ -53,6 +60,10 @@ export class HiddenMenu extends Component {
                     <div className="MenuItem" onClick={() => this.handleClick('MountainRange')} >
                         <img className="EnvironmentImage" src={require('./Mountain Range.png')} alt="Mountain Range" ></img>
                         <p className="EnvironmentText" >Mountain Range</p>
+                    </div>
+                    <div className="MenuItem" onClick={() => this.handleClick('Mines')} >
+                        <img className="EnvironmentImage" src={require('./Mountain Range.png')} alt="Mines" ></img>
+                        <p className="EnvironmentText" >Mines</p>
                     </div>
                 </div>
             </div>

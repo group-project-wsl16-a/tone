@@ -1,20 +1,22 @@
 import React, { Component } from "react";
-import "./Soundboard.css";
+import "./Mines.css";
 import Tone from "tone";
 import Balloons from '../Balloons/Balloons';
 import HiddenMenu from '../Menu/Menu';
-const Drum = require("../Tonal - Audio/Tonal - Acoustic Layers Beat 02.wav");
-const BeachSynth = require("../Tonal - Audio/Tonal - Beach Run Synth.wav");
-const IcySynth = require("../Tonal - Audio/Tonal - Icy Crystals Synth.wav");
-const Vox = require("../Tonal - Audio/Tonal - Stop And Go Vox.wav");
 
-class Soundboard extends Component {
+const Brass = require("../Tonal - Audio/Mines/Funk - Boogie Right Brass 02.wav")
+const Bass = require("../Tonal - Audio/Mines/Funk - Bumping Disco Bass 02.wav")
+const Guitar = require("../Tonal - Audio/Mines/Funk - Bell Bottom Guitar.wav")
+const Piano = require("../Tonal - Audio/Mines/Funk - Funk Disco Piano Lead.wav")
+const Drums = require("../Tonal - Audio/Mines/Funk - Throwback Funk Beat 05.wav")
+
+class Mines extends Component {
     constructor() {
         super();
 
         this.mountainInput = React.createRef();
         this.skyInput = React.createRef();
-        this.SoundboardBody = React.createRef();
+        this.MinesBody = React.createRef();
         this.HourTwo = React.createRef();
         this.HourThree = React.createRef();
         this.icyInput = React.createRef();
@@ -25,27 +27,33 @@ class Soundboard extends Component {
             synth: new Tone.Synth().toMaster(),
             star: [],
             drums: new Tone.Player({
-                url: Drum,
+                url: Drums,
                 loop: true,
                 fadeIn: "5s",
                 volume: '-10',
                 }).toMaster(),
             drumPercent: 57,
-            beach: new Tone.Player({
-                url: BeachSynth,
+            bass: new Tone.Player({
+                url: Bass,
                 loop: true,
                 fadeIn: "3s",
                 volume: '-5',
                 }).toMaster(),
-            icy: new Tone.Player({
-                url: IcySynth,
+            brass: new Tone.Player({
+                url: Brass,
                 loop: true,
                 fadeIn: "7s",
                 volume: '-10',
                 }).toMaster(),
             cloudSize: 0.69,
-            vox: new Tone.Player({
-                url: Vox,
+            piano: new Tone.Player({
+                url: Piano,
+                loop: true,
+                fadeIn: "7s",
+                volume: '-5',
+                }).toMaster(),
+            guitar: new Tone.Player({
+                url: Guitar,
                 loop: true,
                 fadeIn: "7s",
                 volume: '-5',
@@ -54,13 +62,23 @@ class Soundboard extends Component {
         };
     }
 
-    changeVolumes = () => {
-        var drumVol = this.state.drums.volume.value
-        var beachVol = this.state.beach.volume.value
-        var icyVol = this.state.icy.volume.value
-        var voxVol = this.state.vox.volume.value
+    stopPlaying =() => {
+        this.state.drums.stop()
+        this.state.bass.stop()
+        this.state.brass.stop()
+        this.state.piano.stop()
+        this.state.guitar.stop()
+        console.log('working')
+    }
 
-        this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: voxVol} })
+    changeVolumes = () => {
+        var drums = this.state.drums.volume.value
+        var guitar = this.state.guitar.volume.value
+        var bass = this.state.bass.volume.value
+        var brass = this.state.brass.volume.value
+        var piano = this.state.piano.volume.value
+
+        this.setState({ volumes : {drums: drums, guitar: guitar, bass: bass, brass: brass, piano: piano} })
     }
 
     handleClick = (type, e) => {
@@ -83,27 +101,27 @@ class Soundboard extends Component {
     starCounter = () => {
         var count = this.state.star.length
         if (count > 9) {
-            this.state.vox.volume.value = 3
+            this.state.piano.volume.value = 3
         } else if (count === 9) {
-            this.state.vox.volume.value = 1.5
+            this.state.piano.volume.value = 1.5
         } else if (count === 8) {
-            this.state.vox.volume.value = 0
+            this.state.piano.volume.value = 0
         } else if (count === 7) {
-            this.state.vox.volume.value = -3
+            this.state.piano.volume.value = -3
         } else if (count === 6) {
-            this.state.vox.volume.value = -5
+            this.state.piano.volume.value = -5
         } else if (count === 5) {
-            this.state.vox.volume.value = -7
+            this.state.piano.volume.value = -7
         } else if (count === 4) {
-            this.state.vox.volume.value = -10
+            this.state.piano.volume.value = -10
         } else if (count === 3) {
-            this.state.vox.volume.value = -15
+            this.state.piano.volume.value = -15
         } else if (count === 2) {
-            this.state.vox.volume.value = -20
+            this.state.piano.volume.value = -20
         } else if (count === 1) {
-            this.state.vox.volume.value = -25
+            this.state.piano.volume.value = -25
         } else {
-            this.state.vox.volume.value = -30
+            this.state.piano.volume.value = -30
         }
     }
     
@@ -142,9 +160,10 @@ class Soundboard extends Component {
     componentWillMount = () => {
         Tone.Buffer.on("load", () => {
             this.state.drums.start();
-            this.state.beach.start();
-            this.state.icy.start();
-            this.state.vox.start();
+            this.state.piano.start();
+            this.state.bass.start();
+            this.state.brass.start();
+            this.state.guitar.start();
         });
     };
 
@@ -317,7 +336,7 @@ class Soundboard extends Component {
         return (
             <div>
                 <Balloons volumes={this.state.volumes} />
-                <div className="SoundboardBody" ref={this.SoundboardBody} onClick={(e) => this.handleClick('star', e)}>
+                <div className="MinesBody" ref={this.MinesBody} onClick={(e) => this.handleClick('star', e)}>
                     <div ref={this.HourTwo} className="backgroundSecondHour" />
                     <div ref={this.HourThree} className="backgroundThirdHour" />
                     <div id="background-wrap">
@@ -360,10 +379,10 @@ class Soundboard extends Component {
                     {this.starCounter()}
 
                 </div>
-                <HiddenMenu />
+                <HiddenMenu minesStop={this.stopPlaying}/>
             </div>
         );
     }
 }
 
-export default Soundboard;
+export default Mines;

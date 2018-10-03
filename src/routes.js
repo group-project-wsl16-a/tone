@@ -1,11 +1,13 @@
 import React from "react";
 import {Route, Switch} from 'react-router-dom';
-import Soundboard from './components/Soundboard/Soundboard'
-import WorldView from './components/WorldView/WorldView'
+import WorldView from './components/WorldView/WorldView';
+import MountainRange from './components/MountainRange/MountainRange';
+import Mines from './components/Mines/Mines';
 
 export default (
     <Switch>
-        <Route component={Soundboard} exact path='/'/>
+        <Route component={MountainRange} exact path='/'/>
         <Route component={WorldView} path='/worldview'/>
+        <Route component={Mines} path='/mines'/>
     </Switch>
 )
