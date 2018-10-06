@@ -11,7 +11,6 @@ export class Balloons extends Component {
         if (type === 'menu') {
             this.props.history.push('/worldview')
         } else if (type === 'record') {
-
         } else {
             window.location.reload()
         }
