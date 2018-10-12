@@ -325,7 +325,7 @@ class MountainRange extends Component {
         this.setState({ drumPercent: 100 - percentage });
         this.mountainInput.current.classList.add("hover");
     };
-
+    
     changeClouds = (val, min, max) => {
         var newMin = parseInt(min, 10);
         var newMax = parseInt(max, 10);
@@ -339,7 +339,7 @@ class MountainRange extends Component {
         return (
             <div>
                 <Balloons volumes={this.state.volumes} />
-                <div className="MountainRangeBody" ref={this.MountainRangeBody} onClick={(e) => this.handleClick('star', e)}>
+                <div className="MountainRangeBody" id="domtoimage" ref={this.MountainRangeBody} onClick={(e) => this.handleClick('star', e)}>
                     <div ref={this.HourTwo} className="backgroundSecondHour" />
                     <div ref={this.HourThree} className="backgroundThirdHour" />
                     <div id="background-wrap">
@@ -372,7 +372,7 @@ class MountainRange extends Component {
                     <div className="IcyGrabber" onMouseEnter={() => this.handleMouseEnter("icy")} onMouseLeave={() => this.handleMouseLeave("icy")}></div>
                     <input ref={this.icyInput} className="VolumeSlider Blink" id="IcySynth" type="range" min="-45" max="6" defaultValue="-10" onMouseEnter={() => this.handleMouseEnter('icy')} onInput={e => this.handleChange("Icy",e.target.value,e.target.min,e.target.max)} />
 
-                    <div className="bkgMount" ></div>
+                    <div className="bkgMount"></div>
 
                     {/* Stars */}
                     {this.state.star.map((star, i) =>
