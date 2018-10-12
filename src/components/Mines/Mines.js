@@ -184,9 +184,9 @@ class Mines extends Component {
     }
 
     changeDay = (val, min, max) => {
-        var newMin = parseInt(min);
-        var newMax = parseInt(max);
-        var newVal = parseInt(val);
+        var newMin = parseInt(min, 10);
+        var newMax = parseInt(max, 10);
+        var newVal = parseInt(val, 10);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
         if (percentage <= 5) {
             this.HourTwo.current.style.opacity = 0.1;
@@ -313,9 +313,9 @@ class Mines extends Component {
     };
 
     findPercentage = (val, min, max) => {
-        var newMin = parseInt(min);
-        var newMax = parseInt(max);
-        var newVal = parseInt(val);
+        var newMin = parseInt(min, 10);
+        var newMax = parseInt(max, 10);
+        var newVal = parseInt(val, 10);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
         if (percentage <= 5) {
             percentage = 5;
@@ -325,9 +325,9 @@ class Mines extends Component {
     };
 
     changeClouds = (val, min, max) => {
-        var newMin = parseInt(min);
-        var newMax = parseInt(max);
-        var newVal = parseInt(val);
+        var newMin = parseInt(min, 10);
+        var newMax = parseInt(max, 10);
+        var newVal = parseInt(val, 10);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
         this.setState({ cloudSize: percentage/100 })
     }
