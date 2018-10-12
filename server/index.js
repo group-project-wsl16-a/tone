@@ -6,7 +6,7 @@ const states = require('./controllers/states_controller')
 
 const app = express()
 
-app.use( bodyParser.json() )
+app.use(bodyParser.json({limit: '700kb'}));
 app.use( cors() )
 
 //API Endpoints
