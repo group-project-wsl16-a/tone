@@ -12,29 +12,23 @@ export class Balloons extends Component {
     if (type === "menu") {
       this.props.history.push("/worldview");
     } else if (type === "record") {
+      this.screenshot()
+      console.log(this.props.volumes)
     } else {
       window.location.reload();
     }
   };
 
-    handleClick = (type) => {
-        if (type === 'menu') {
-            this.props.history.push('/worldview')
-        } else if (type === 'record') {
-        } else {
-            window.location.reload()
-        }
-    }
-  //SceenShot//
+  //Screenshot
 
-  takeScreenshot = () => {
+  screenshot = () => {
     let body = document.querySelector("html");
 
     html2canvas(body).then(canvas => {
       let imgData = canvas.toDataURL("image/png");
       console.log(imgData);
     });
-  };
+  }
 
   render(props) {
     console.log(this.props);
@@ -46,7 +40,6 @@ export class Balloons extends Component {
           onClick={() => this.handleClick("menu")}
           alt="World View Balloon"
         />
-        <button onClick={this.takeScreenshot} />
         <img
           className="RecordBalloon"
           src={require("./Record-Balloon.png")}
