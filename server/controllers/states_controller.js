@@ -1,10 +1,6 @@
 //Array that stores all the states and pics of the states
-let states = [
-    {
-        state: {},
-        pic: ''
-    },
-]
+// const basicImg = require('../basicImg.jpeg')
+let states = []
 
 module.exports = {
     allStates: (req, res) => {

@@ -1,0 +1,14 @@
+.scrollingImage {
+    height: 100px;
+    transition: ease-in-out .4s;
+    border: 3px white solid;
+}
+
+.imghovered {
+    height: 150px;
+}
+
+.scrollingImage img {
+    height: 100%;
+    width: auto;
+}

@@ -2,10 +2,14 @@ import React, { Component } from "react";
 import "./Balloons.css";
 import { withRouter } from "react-router";
 import domtoimage from 'dom-to-image';
+import axios from 'axios';
 
 export class Balloons extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      volumes: this.props.volumes
+    }
   }
 
   handleClick = type => {
@@ -13,7 +17,6 @@ export class Balloons extends Component {
       this.props.history.push("/worldview");
     } else if (type === "record") {
       this.screenshot()
-      console.log(this.props.volumes)
     } else {
       window.location.reload();
     }
@@ -23,20 +26,24 @@ export class Balloons extends Component {
 
   screenshot = () => {
     var node = document.getElementById('domtoimage');
+    var volumes = this.state.volumes
 
     domtoimage.toPng(node)
         .then(function (dataUrl) {
             var img = new Image();
             img.src = dataUrl;
-            document.body.appendChild(img);
-            console.log(img)
+            
+            console.log(volumes, img.src)
+            axios.post(`http://localhost:3030/api/examples`, {
+              state: volumes,
+              pic: img.src
+            })
+
         })
         .catch(function (error) {
             console.error('oops, something went wrong!', error);
         });
-
   }
-
 
   render(props) {
     console.log(this.props);
