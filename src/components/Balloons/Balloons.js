@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Balloons.css";
 import { withRouter } from "react-router";
-import html2canvas from "html2canvas";
+import domtoimage from 'dom-to-image';
 
 export class Balloons extends Component {
   constructor(props) {
@@ -22,13 +22,21 @@ export class Balloons extends Component {
   //Screenshot
 
   screenshot = () => {
-    let body = document.querySelector("html");
+    var node = document.getElementById('domtoimage');
 
-    html2canvas(body).then(canvas => {
-      let imgData = canvas.toDataURL("image/png");
-      console.log(imgData);
-    });
+    domtoimage.toPng(node)
+        .then(function (dataUrl) {
+            var img = new Image();
+            img.src = dataUrl;
+            document.body.appendChild(img);
+            console.log(img)
+        })
+        .catch(function (error) {
+            console.error('oops, something went wrong!', error);
+        });
+
   }
+
 
   render(props) {
     console.log(this.props);
