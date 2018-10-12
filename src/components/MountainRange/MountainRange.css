@@ -1,4 +1,4 @@
-.SoundboardBody {
+.MountainRangeBody {
   height: 100vh;
   width: 100vw;
   align-items: center;
@@ -139,10 +139,15 @@
 .cloud {
   position: relative;
   fill: transparent;
-  stroke: black;
+  stroke: rgb(162, 162, 162);
   stroke-width: 1px;
+<<<<<<< HEAD:src/components/Soundboard/Soundboard.css
   transition: 0.2s;
   fill: rgb(196, 196, 196);
+=======
+  transition: .2s;
+  fill: rgb(158, 158, 158);
+>>>>>>> master:src/components/MountainRange/MountainRange.css
 }
 
 .cloudOne {

@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import Soundboard from './components/Soundboard/Soundboard'
+import Routes from './routes';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
-        <Soundboard />
+        {Routes}
       </div>
     );
   }
