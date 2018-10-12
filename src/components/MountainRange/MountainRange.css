@@ -57,7 +57,7 @@
   border-radius: 50%;
   background: white;
   position: absolute;
-  transition: .5s;
+  transition: 0.5s;
   transform-origin: center;
   animation-duration: 1.3s;
   animation-name: blink;
@@ -67,15 +67,37 @@
 }
 
 @keyframes blink {
-  0% {clip-path: polygon(15% 50%, 40% 40%, 50% 0%, 60% 40%, 85% 50%, 60% 60%, 50% 100%, 40% 60%)}
-  100% {clip-path: polygon(0% 50%, 40% 40%, 50% 15%, 60% 40%, 100% 50%, 60% 60%, 50% 85%, 40% 60%);}
+  0% {
+    clip-path: polygon(
+      15% 50%,
+      40% 40%,
+      50% 0%,
+      60% 40%,
+      85% 50%,
+      60% 60%,
+      50% 100%,
+      40% 60%
+    );
+  }
+  100% {
+    clip-path: polygon(
+      0% 50%,
+      40% 40%,
+      50% 15%,
+      60% 40%,
+      100% 50%,
+      60% 60%,
+      50% 85%,
+      40% 60%
+    );
+  }
 }
 
 .hovered {
-  transform: scale(1.5)
+  transform: scale(1.5);
 }
 
-.Blink::-webkit-slider-thumb{
+.Blink::-webkit-slider-thumb {
   clip-path: polygon(55% 0, 80% 50%, 55% 100%, 45% 100%, 25% 50%, 45% 0);
   transform: rotate(270deg);
   border: 4px black solid;
@@ -96,19 +118,19 @@
 
 @keyframes animateBigCloud {
   0% {
-    left: -1850px
+    left: -1850px;
   }
   100% {
-    left: 1500px
+    left: 1500px;
   }
 }
 
 @keyframes animateSmallCloud {
   0% {
-    left: -700px
+    left: -700px;
   }
   100% {
-    left: 1500px
+    left: 1500px;
   }
 }
 
@@ -119,8 +141,13 @@
   fill: transparent;
   stroke: rgb(162, 162, 162);
   stroke-width: 1px;
+<<<<<<< HEAD:src/components/Soundboard/Soundboard.css
+  transition: 0.2s;
+  fill: rgb(196, 196, 196);
+=======
   transition: .2s;
   fill: rgb(158, 158, 158);
+>>>>>>> master:src/components/MountainRange/MountainRange.css
 }
 
 .cloudOne {
@@ -128,7 +155,7 @@
   height: 350px;
   left: -2500px;
   animation: animateBigCloud 130s linear infinite;
-  animation-delay: 4.5s
+  animation-delay: 4.5s;
 }
 
 .cloudTwo {
@@ -233,5 +260,34 @@
   position: absolute;
   bottom: 0px;
   left: 0px;
-  clip-path: polygon(0% 100%, 0% 20%, 2% 10%, 5% 25%, 6% 38%, 8% 45%, 10% 30%, 15% 20%, 18% 45%, 24% 60%, 30% 50%, 35% 80%, 40% 50%, 47% 65%, 49% 75%, 52% 60%,55% 20%, 59% 44%, 63% 55%,65% 46%, 68% 30%, 75% 50%, 85% 54%, 86% 60%, 90% 72%, 93% 80%, 100% 20%, 100% 100%);
+  clip-path: polygon(
+    0% 100%,
+    0% 20%,
+    2% 10%,
+    5% 25%,
+    6% 38%,
+    8% 45%,
+    10% 30%,
+    15% 20%,
+    18% 45%,
+    24% 60%,
+    30% 50%,
+    35% 80%,
+    40% 50%,
+    47% 65%,
+    49% 75%,
+    52% 60%,
+    55% 20%,
+    59% 44%,
+    63% 55%,
+    65% 46%,
+    68% 30%,
+    75% 50%,
+    85% 54%,
+    86% 60%,
+    90% 72%,
+    93% 80%,
+    100% 20%,
+    100% 100%
+  );
 }
