@@ -1,237 +1,72 @@
 .MinesBody {
-    height: 100vh;
-    width: 100vw;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    background: -webkit-linear-gradient(
-      130deg,
-      #d6b98d 9%,
-      #c99262 14%,
-      #8c5962 30%,
-      #43577e 100%
-    );
-    transition: 0.3s;
-  }
-  
-  .backgroundSecondHour {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100vh;
-    width: 100vw;
-    /* background: -webkit-linear-gradient(25deg, #6bafd2 0%, #a4c8dc 38%, #d6cbca 58%, #eabc96 79%, #db8876 100%); */
-    background: -webkit-linear-gradient(
-      -130deg,
-      #db8876 1%,
-      #eabc96 10%,
-      #d6cbca 20%,
-      #a4c8dc 40%,
-      #6bafd2 100%
-    );
-    opacity: 1;
-    transition: 0.3s;
-  }
-  
-  .backgroundThirdHour {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    height: 100vh;
-    width: 100vw;
-    background: -webkit-linear-gradient(
-      80deg,
-      #a2e0f9 6%,
-      #cef5fc 39%,
-      #eafaeb 70%,
-      #fefcd3 88%,
-      #fdf4ba 100%
-    );
-    opacity: 0.3;
-    transition: 0.3s;
-  }
-  
-  .star {
-    height: 70px;
-    width: 70px;
-    border-radius: 50%;
-    background: white;
-    position: absolute;
-    transition: .5s;
-    transform-origin: center;
-    animation-duration: 1.3s;
-    animation-name: blink;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    animation-timing-function: ease-in-out;
-  }
-  
-  @keyframes blink {
-    0% {clip-path: polygon(15% 50%, 40% 40%, 50% 0%, 60% 40%, 85% 50%, 60% 60%, 50% 100%, 40% 60%)}
-    100% {clip-path: polygon(0% 50%, 40% 40%, 50% 15%, 60% 40%, 100% 50%, 60% 60%, 50% 85%, 40% 60%);}
-  }
-  
-  .hovered {
-    transform: scale(1.5)
-  }
-  
-  .Blink::-webkit-slider-thumb{
-    clip-path: polygon(55% 0, 80% 50%, 55% 100%, 45% 100%, 25% 50%, 45% 0);
-    transform: rotate(270deg);
-    border: 4px black solid;
-    opacity: 0.3;
-  }
-  
-  #background-wrap {
-    top: 140px;
-    width: 99.9vw;
-    height: 450px;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    /* border: 1px white solid; */
-  }
-  
-  /* KEYFRAMES */
-  
-  @keyframes animateBigCloud {
-    0% {
-      left: -1850px
-    }
-    100% {
-      left: 1500px
-    }
-  }
-  
-  @keyframes animateSmallCloud {
-    0% {
-      left: -700px
-    }
-    100% {
-      left: 1500px
-    }
-  }
-  
-  /* OBJECTS */
-  
-  .cloud {
-    position: relative;
-    fill: transparent;
-    stroke: rgb(162, 162, 162);
-    stroke-width: 1px;
-    transition: .2s;
-    fill: rgb(158, 158, 158);
-  }
-  
-  .cloudOne {
-    width: 2500px;
-    height: 350px;
-    left: -2500px;
-    animation: animateBigCloud 130s linear infinite;
-    animation-delay: 4.5s
-  }
-  
-  .cloudTwo {
-    width: 919px;
-    height: 225px;
-    animation: animateSmallCloud 30s linear infinite;
-  }
-  
-  .VolumeSlider:focus {
-    outline: none;
-  }
-  
-  .VolumeSlider {
-    -webkit-appearance: none;
-    background: transparent;
-    transition: all ease 0.3s;
-  }
-  
-  .VolumeSlider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 23px;
-    height: 23px;
-    border-radius: 50%;
-    background: transparent;
-    cursor: pointer;
-    transition: all ease 0.5s;
-  }
-  
-  .hover::-webkit-slider-thumb {
-    border: 2px white solid;
-  }
-  
-  #BeachSynth {
-    position: absolute;
-    top: 225px;
-    right: 100px;
-    /* border: white 1px solid; */
-    transform: rotate(235deg);
-    width: 250px;
-    height: 23px;
-  }
-  
-  #DrumSlider {
-    position: absolute;
-    bottom: 300px;
-    /* border: white 1px solid; */
-    transform: rotate(270deg);
-    width: 550px;
-    height: 23px;
-  }
-  
-  #IcySynth {
-    position: absolute;
-    top: 300px;
-    left: 250px;
-    /* border: white 1px solid; */
-    transform: rotate(270deg);
-    width: 250px;
-    height: 23px;
-  }
-  
-  .DrumGrabber {
-    width: 250px;
-    height: 650px;
-    /* border: white 1px solid; */
-    position: absolute;
-    bottom: 0px;
-  }
-  
-  .BeachGrabber {
-    width: 400px;
-    height: 400px;
-    /* border: white 1px solid; */
-    position: absolute;
-    top: 50px;
-    right: 0px;
-  }
-  
-  .IcyGrabber {
-    width: 300px;
-    height: 300px;
-    /* border: white 1px solid; */
-    position: absolute;
-    top: 165px;
-    left: 230px;
-  }
-  
-  .Mountain {
-    /* background: transparent; */
-    background: rgb(0, 0, 60);
-    width: 600px;
-    height: 600px;
-    position: absolute;
-    bottom: 0px;
-  }
-  
-  .bkgMount {
-    background: rgb(0, 0, 60);
-    width: 100vw;
-    height: 250px;
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    clip-path: polygon(0% 100%, 0% 20%, 2% 10%, 5% 25%, 6% 38%, 8% 45%, 10% 30%, 15% 20%, 18% 45%, 24% 60%, 30% 50%, 35% 80%, 40% 50%, 47% 65%, 49% 75%, 52% 60%,55% 20%, 59% 44%, 63% 55%,65% 46%, 68% 30%, 75% 50%, 85% 54%, 86% 60%, 90% 72%, 93% 80%, 100% 20%, 100% 100%);
-  }
+  background: rgb(199, 199, 199);
+  height: 100vh;
+  width: 100vw;
+  background: whitesmoke;
+}
+
+.Cavern {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  clip-path: polygon(0 0, 0 54%, 4% 56%, 5% 31%, 4% 22%, 6% 49%, 7% 36%, 10% 21%, 13% 49%, 13% 19%, 18% 57%, 20% 17%, 26% 43%, 27% 63%, 30% 18%, 36% 19%, 37% 59%, 38% 28%, 43% 13%, 48% 59%, 48% 23%, 53% 48%, 50% 15%, 61% 34%, 62% 57%, 64% 35%, 65% 24%, 70% 15%, 74% 57%, 73% 16%, 80% 53%, 79% 19%, 83% 30%, 84% 47%, 85% 31%, 85% 20%, 88% 21%, 89% 33%, 89% 63%, 90% 41%, 91% 25%, 92% 20%, 94% 72%, 95% 43%, 100% 67%, 100% 26%, 100% 14%, 100% 65%, 98% 54%, 94% 89%, 89% 68%, 90% 86%, 86% 94%, 84% 73%, 82% 87%, 77% 57%, 77% 88%, 74% 70%, 70% 90%, 69% 65%, 66% 77%, 63% 63%, 63% 80%, 60% 82%, 59% 68%, 56% 82%, 53% 81%, 52% 63%, 50% 81%, 45% 56%, 41% 81%, 39% 65%, 38% 80%, 33% 57%, 31% 84%, 29% 68%, 28% 79%, 26% 72%, 23% 67%, 21% 53%, 20% 77%, 18% 69%, 16% 62%, 15% 75%, 7% 60%, 0 42%, 0 100%, 100% 100%, 100% 0);
+  background-image: url('../Assets/image_4.png');
+  filter: brightness(20%) blur(3px);
+}
+
+.CavernTwo {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  clip-path: polygon(0 0, 0 32%, 1% 41%, 2% 30%, 4% 22%, 5% 41%, 7% 36%, 10% 21%, 16% 17%, 17% 33%, 19% 39%, 23% 17%, 26% 43%, 28% 46%, 30% 18%, 37% 23%, 40% 40%, 41% 29%, 43% 13%, 48% 14%, 49% 39%, 50% 31%, 54% 17%, 61% 20%, 64% 41%, 65% 19%, 71% 13%, 78% 30%, 79% 39%, 79% 47%, 80% 43%, 82% 21%, 83% 30%, 84% 39%, 85% 31%, 85% 20%, 88% 21%, 89% 33%, 89% 62%, 90% 57%, 91% 25%, 92% 20%, 94% 24%, 96% 39%, 97% 30%, 99% 22%, 100% 14%, 100% 97%, 96% 81%, 94% 89%, 89% 68%, 89% 85%, 86% 94%, 84% 83%, 83% 74%, 81% 65%, 77% 88%, 74% 70%, 72% 88%, 68% 87%, 65% 94%, 63% 73%, 62% 80%, 61% 92%, 58% 91%, 54% 83%, 52% 76%, 51% 69%, 50% 81%, 48% 86%, 47% 87%, 41% 89%, 39% 63%, 37% 78%, 35% 88%, 30% 80%, 27% 71%, 25% 58%, 23% 80%, 20% 88%, 19% 93%, 18% 78%, 16% 71%, 13% 81%, 10% 88%, 9% 93%, 7% 73%, 4% 69%, 3% 53%, 0 69%, 0 100%, 100% 100%, 100% 0);
+  background-image: url('../Assets/image_4.png');
+  filter: brightness(70%) blur(2px);
+}
+
+.CavernThree {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100vw;
+  height: 100vh;
+  clip-path: polygon(1% 0%, 4% 55%, 6% 46%, 7% 18%, 10% 0, 16% 0, 17% 10%, 23% 52%, 26% 64%, 29% 16%, 32% 0, 40% 0%, 44% 53%, 49% 0%, 57% 0%, 60% 19%, 65% 0%, 69% 41%, 70% 0%, 71% 0%, 72% 15%, 75% 44%, 78% 63%, 80% 16%, 82% 0, 89% 0, 93% 19%, 94% 29%, 96% 62%, 99% 52%, 100% 36%, 100% 0, 100% 0%, 100% 100%, 98% 76%, 96% 71%, 94% 56%, 93% 83%, 92% 100%, 84% 100%, 82% 63%, 80% 77%, 77% 87%, 76% 100%, 72% 100%, 70% 87%, 66% 80%, 64% 59%, 59% 49%, 56% 77%, 55% 100%, 50% 100%, 48% 86%, 45% 55%, 42% 67%, 41% 83%, 38% 92%, 37% 100%, 28% 100%, 27% 92%, 23% 86%, 21% 81%, 20% 69%, 17% 73%, 16% 83%, 14% 78%, 11% 82%, 9% 100%, 6% 100%, 3% 67%, 0 100%, 100% 100%, 100% 0);
+  background-image: url('../Assets/image_4.png');
+  filter: brightness(90%) blur(1px);
+}
+
+.CavernFour {
+  position: absolute;
+  bottom: 0px;
+  left: 250px;
+  width: 80vw;
+  height: 100vh;
+  clip-path: polygon(0 0, 0 37%, 1% 48%, 4% 21%, 9% 0, 39% 0, 40% 14%, 43% 25%, 45% 41%, 48% 32%, 49% 20%, 51% 9%, 52% 0, 67% 0, 68% 9%, 69% 12%, 74% 44%, 75% 47%, 77% 58%, 80% 44%, 81% 34%, 82% 30%, 84% 29%, 85% 32%, 87% 13%, 90% 6%, 93% 0, 100% 0, 100% 100%, 100% 100%, 96% 84%, 93% 77%, 92% 70%, 90% 61%, 86% 71%, 83% 75%, 82% 90%, 79% 100%, 67% 100%, 65% 86%, 64% 72%, 60% 48%, 57% 81%, 56% 64%, 55% 84%, 53% 94%, 52% 100%, 36% 100%, 32% 80%, 28% 65%, 26% 72%, 23% 88%, 19% 91%, 16% 76%, 14% 62%, 13% 54%, 11% 60%, 10% 75%, 8% 90%, 7% 100%, 100% 100%, 100% 0);
+  background-image: url('../Assets/image_4.png');
+  filter: brightness(90%) blur(0px);
+}
+
+.CavernFive {
+  position: absolute;
+  bottom: 0px;
+  left: 250px;
+  width: 80vw;
+  height: 100vh;
+  clip-path: polygon(14% 0, 21% 41%, 26% 48%, 32% 27%, 40% 0, 68% 0%, 76% 29%, 81% 44%, 82% 55%, 85% 18%, 89% 0, 100% 0%, 100% 100%, 78% 100%, 74% 78%, 71% 62%, 65% 57%, 65% 71%, 62% 100%, 26% 100%, 22% 92%, 19% 72%, 17% 76%, 14% 100%, 0 100%, 100% 100%, 100% 0);
+  background-image: url('../Assets/image_4.png');
+  filter: brightness(90%) blur(0px);
+}
+
+/* .CaveWater {
+  position: absolute;
+  bottom: 0px;
+  left: 600px;
+  width: 40vw;
+  height: 300px;
+  background-image: url('../Assets/Water.png');
+  clip-path: polygon(0% 100%, 100% 100%, 97% 75%, 94% 71%, 89% 68%, 83% 68%, 73% 68%, 58% 73%, 43% 68%, 36% 62%, 28% 62%, 20% 63%, 12% 68%, 3% 77%, 1% 82%);
+  background-size: cover;
+} */

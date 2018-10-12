@@ -17,6 +17,14 @@ export class Balloons extends Component {
     }
   };
 
+    handleClick = (type) => {
+        if (type === 'menu') {
+            this.props.history.push('/worldview')
+        } else if (type === 'record') {
+        } else {
+            window.location.reload()
+        }
+    }
   //SceenShot//
 
   takeScreenshot = () => {
