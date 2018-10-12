@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./MountainRange.css";
 import Tone from "tone";
 import Balloons from '../Balloons/Balloons';
@@ -150,6 +151,13 @@ class MountainRange extends Component {
         if (this.props.pathname === '/mines') {
             this.stopPlaying()
         }
+
+        //Returns the states array, need to get the LocalHost out of the URI though...
+        axios.get('http://localhost:3030/api/examples').then(res => {
+            console.log(res.data);
+        }).catch(error => {
+            console.log('Error', error)
+        })
     }
 
     componentWillMount = () => {
@@ -178,9 +186,9 @@ class MountainRange extends Component {
     }
 
     changeDay = (val, min, max) => {
-        var newMin = parseInt(min);
-        var newMax = parseInt(max);
-        var newVal = parseInt(val);
+        var newMin = parseInt(min, 10);
+        var newMax = parseInt(max, 10);
+        var newVal = parseInt(val, 10);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
         if (percentage <= 5) {
             this.HourTwo.current.style.opacity = 0.1;
@@ -307,9 +315,9 @@ class MountainRange extends Component {
     };
 
     findPercentage = (val, min, max) => {
-        var newMin = parseInt(min);
-        var newMax = parseInt(max);
-        var newVal = parseInt(val);
+        var newMin = parseInt(min, 10);
+        var newMax = parseInt(max, 10);
+        var newVal = parseInt(val, 10);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
         if (percentage <= 5) {
             percentage = 5;
@@ -319,9 +327,9 @@ class MountainRange extends Component {
     };
 
     changeClouds = (val, min, max) => {
-        var newMin = parseInt(min);
-        var newMax = parseInt(max);
-        var newVal = parseInt(val);
+        var newMin = parseInt(min, 10);
+        var newMax = parseInt(max, 10);
+        var newVal = parseInt(val, 10);
         var percentage = ((newVal - newMin) * 100) / (newMax - newMin);
         this.setState({ cloudSize: percentage/100 })
     }
