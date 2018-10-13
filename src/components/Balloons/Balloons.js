@@ -27,6 +27,7 @@ export class Balloons extends Component {
   screenshot = () => {
     var node = document.getElementById('domtoimage');
     var volumes = this.state.volumes
+    var environment = this.props.environment
 
     domtoimage.toPng(node)
         .then(function (dataUrl) {
@@ -36,7 +37,8 @@ export class Balloons extends Component {
             console.log(volumes, img.src)
             axios.post(`http://localhost:3030/api/examples`, {
               state: volumes,
-              pic: img.src
+              pic: img.src,
+              environment: environment
             })
 
         })
