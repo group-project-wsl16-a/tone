@@ -338,7 +338,7 @@ class MountainRange extends Component {
         console.log(this.state.volumes)
         return (
             <div>
-                <Balloons volumes={this.state.volumes} />
+                <Balloons volumes={this.state.volumes} environment={1} />
                 <div className="MountainRangeBody" id="domtoimage" ref={this.MountainRangeBody} onClick={(e) => this.handleClick('star', e)}>
                     <div ref={this.HourTwo} className="backgroundSecondHour" />
                     <div ref={this.HourThree} className="backgroundThirdHour" />

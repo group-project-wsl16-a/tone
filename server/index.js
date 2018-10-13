@@ -1,10 +1,16 @@
+require('dotenv').config();
 const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
-const states = require('./controllers/states_controller')
+const states = require('./states_controller')
+const massive = require('massive');
 
 const app = express()
+
+//Connecting to the Database
+// console.log(process.env.CONNECTION_STRING)
+massive( process.env.CONNECTION_STRING ).then( dbInstance => { app.set('db', dbInstance) });
 
 app.use(bodyParser.json({limit: '700kb'}));
 app.use( cors() )
@@ -19,5 +25,5 @@ app.get('/*', express.static(
 ))
 
 //Define Port and Launch Server
-const port = 3030
-app.listen( port, () => { console.log(`Server listening on port ${port}.`) })
+let PORT = process.env.PORT || 3030;
+app.listen( PORT, () => { console.log(`Server listening on port ${PORT}.`) })

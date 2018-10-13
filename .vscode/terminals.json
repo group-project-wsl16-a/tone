@@ -1,0 +1,15 @@
+{
+  "autorun": true,
+  "terminals": [
+    {
+      "name": "Front-End",
+      "focus": false,
+      "command": ""
+    },
+    {
+      "name": "Server",
+      "focus": false,
+      "command": "cd server"
+    }
+  ]
+}
