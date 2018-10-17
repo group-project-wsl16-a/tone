@@ -59,9 +59,14 @@ class MountainRange extends Component {
         var drumVol = this.state.drums.volume.value
         var beachVol = this.state.beach.volume.value
         var icyVol = this.state.icy.volume.value
-        var voxVol = this.state.vox.volume.value
+        var voxList = []
+        if (this.state.star.length===0) {
+            voxList = [{"x":1000,"y":1000}]
+        } else {
+            voxList = this.state.star
+        }
 
-        this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: this.state.star} })
+        this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: voxList} })
     }
 
     stopPlaying =() => {
@@ -390,7 +395,7 @@ class MountainRange extends Component {
                     {this.starCounter()}
 
                 </div>
-                <HiddenMenu mountainStop={this.stopPlaying} />
+                {/* <HiddenMenu mountainStop={this.stopPlaying} /> */}
             </div>
         );
     }

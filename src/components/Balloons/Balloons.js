@@ -7,6 +7,7 @@ import axios from 'axios';
 export class Balloons extends Component {
   constructor(props) {
     super(props);
+    this.flash = React.createRef();
   }
 
   handleClick = type => {
@@ -26,6 +27,10 @@ export class Balloons extends Component {
     var node = document.getElementById('domtoimage');
     var volumes = this.props.volumes
     var environment = this.props.environment
+    
+    this.flash.current.classList.add('Flash')
+
+    setTimeout(this.stopFlash, 1000)
 
     domtoimage.toPng(node)
         .then(function (dataUrl) {
@@ -44,9 +49,14 @@ export class Balloons extends Component {
         });
   }
 
+  stopFlash = () => {
+    this.flash.current.classList.remove('Flash')
+  }
+
   render(props) {
     return (
       <div className="BalloonsBody">
+        <div className="" ref={this.flash} ></div>
         <img
           className="MenuBalloon"
           src={require("./Menu-Balloon.png")}
