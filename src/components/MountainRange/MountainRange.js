@@ -60,7 +60,6 @@ class MountainRange extends Component {
         var beachVol = this.state.beach.volume.value
         var icyVol = this.state.icy.volume.value
         var voxVol = this.state.vox.volume.value
-        console.log('running', drumVol)
 
         this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: this.state.star} })
     }
@@ -156,10 +155,18 @@ class MountainRange extends Component {
 
     updateState = () => {
         var volumes = JSON.parse(JSON.parse(decodeURIComponent(this.props.match.params.state)))
-        this.mountainInput.current.value = volumes.DrumVol
-        this.skyInput.current.value = volumes.BeachVol
-        this.icyInput.current.value = volumes.icyVol
+        var worldDrum = volumes.drumVol
+        var worldBeach = volumes.beachVol
+        var worldIcy = volumes.icyVol
+        
+        this.mountainInput.current.value = worldDrum
+        this.skyInput.current.value = worldBeach
+        this.icyInput.current.value = worldIcy
         this.setState({star : volumes.voxVol})
+
+        this.handleChange( "drum", worldDrum, -25, 10 )
+        this.handleChange( "beach", worldBeach, -20, 6 )
+        this.handleChange( "Icy", worldIcy, -45, 6 )
     }
 
     componentWillMount = () => {
