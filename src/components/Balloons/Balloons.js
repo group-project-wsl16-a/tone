@@ -7,9 +7,6 @@ import axios from 'axios';
 export class Balloons extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      volumes: this.props.volumes
-    }
   }
 
   handleClick = type => {
@@ -18,6 +15,7 @@ export class Balloons extends Component {
     } else if (type === "record") {
       this.screenshot()
     } else {
+      this.props.history.push('/')
       window.location.reload();
     }
   };
@@ -26,7 +24,7 @@ export class Balloons extends Component {
 
   screenshot = () => {
     var node = document.getElementById('domtoimage');
-    var volumes = this.state.volumes
+    var volumes = this.props.volumes
     var environment = this.props.environment
 
     domtoimage.toPng(node)
@@ -34,7 +32,6 @@ export class Balloons extends Component {
             var img = new Image();
             img.src = dataUrl;
             
-            console.log(volumes, img.src)
             axios.post(`http://localhost:3030/api/examples`, {
               state: volumes,
               pic: img.src,
@@ -48,7 +45,7 @@ export class Balloons extends Component {
   }
 
   render(props) {
-    console.log(this.props);
+    console.log(this.props.volumes)
     return (
       <div className="BalloonsBody">
         <img

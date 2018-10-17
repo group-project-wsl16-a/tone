@@ -84,48 +84,55 @@ export default class WorldView extends Component {
         document.getElementById(i).classList.remove('imghovered')
     }
 
+    handleClick = (environment, state) => {
+        if (environment === 1) {
+            this.props.history.push(`/mountain/${encodeURIComponent(JSON.stringify(state))}`);
+        } else {
+
+        }
+    }
+
     render () {
-        console.log(this.state.boxOne)
         return (
             <div className="WorldViewBody" >
                 <div className="ScrollBox ScrollBoxOne" >
                     {this.state.boxOne.map((obj) => 
-                        <div key={obj.id} id={obj.id} className="scrollingImage" onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
+                        <div key={obj.id} id={obj.id} className="scrollingImage" onClick={() => this.handleClick(obj.environment, obj.state)} onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
                             <img src={obj.thumbnail} alt="" ></img>
                         </div>
                     )}
                 </div>
                 <div className="ScrollBox ScrollBoxTwo" >
                 {this.state.boxTwo.map((obj) => 
-                        <div key={obj.id} id={obj.id} className="scrollingImage" onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
+                        <div key={obj.id} id={obj.id} className="scrollingImage" onClick={() => this.handleClick(obj.environment, obj.state)} onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
                             <img src={obj.thumbnail} alt="" ></img>
                         </div>
                     )}
                 </div>
                 <div className="ScrollBox ScrollBoxThree" >
                 {this.state.boxThree.map((obj) => 
-                        <div key={obj.id} id={obj.id} className="scrollingImage" onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
+                        <div key={obj.id} id={obj.id} className="scrollingImage" onClick={() => this.handleClick(obj.environment, obj.state)} onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
                             <img src={obj.thumbnail} alt="" ></img>
                         </div>
                     )}
                 </div>
                 <div className="ScrollBox ScrollBoxFour" >
                 {this.state.boxFour.map((obj) => 
-                        <div key={obj.id} id={obj.id} className="scrollingImage" onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
+                        <div key={obj.id} id={obj.id} className="scrollingImage" onClick={() => this.handleClick(obj.environment, obj.state)} onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
                             <img src={obj.thumbnail} alt="" ></img>
                         </div>
                     )}
                 </div>
                 <div className="ScrollBox ScrollBoxFive" >
                 {this.state.boxFive.map((obj) => 
-                        <div key={obj.id} id={obj.id} className="scrollingImage" onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
+                        <div key={obj.id} id={obj.id} className="scrollingImage" onClick={() => this.handleClick(obj.environment, obj.state)} onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
                             <img src={obj.thumbnail} alt="" ></img>
                         </div>
                     )}
                 </div>
                 <div className="ScrollBox ScrollBoxSix" >
                 {this.state.boxSix.map((obj) => 
-                        <div key={obj.id} id={obj.id} className="scrollingImage" onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
+                        <div key={obj.id} id={obj.id} className="scrollingImage" onClick={() => this.handleClick(obj.environment, obj.state)} onMouseEnter={() => this.handleMouseEnter(obj.id)} onMouseLeave={() => this.handleMouseLeave(obj.id)} >
                             <img src={obj.thumbnail} alt="" ></img>
                         </div>
                     )}
