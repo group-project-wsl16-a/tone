@@ -45,7 +45,6 @@ export class Balloons extends Component {
   }
 
   render(props) {
-    console.log(this.props.volumes)
     return (
       <div className="BalloonsBody">
         <img
