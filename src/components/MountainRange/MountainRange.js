@@ -60,8 +60,9 @@ class MountainRange extends Component {
         var beachVol = this.state.beach.volume.value
         var icyVol = this.state.icy.volume.value
         var voxVol = this.state.vox.volume.value
+        console.log('running', drumVol)
 
-        this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: voxVol} })
+        this.setState({ volumes : {drumVol: drumVol, beachVol: beachVol, icyVol: icyVol, voxVol: this.state.star} })
     }
 
     stopPlaying =() => {
@@ -148,16 +149,17 @@ class MountainRange extends Component {
     }
 
     componentDidMount = () => {
-        if (this.props.pathname === '/mines') {
-            this.stopPlaying()
-        }
+        this.props.match.params.state ? 
+        this.updateState()
+        : null
+    }
 
-        //Returns the states array, need to get the LocalHost out of the URI though...
-        axios.get('http://localhost:3030/api/examples').then(res => {
-            console.log(res.data);
-        }).catch(error => {
-            console.log('Error', error)
-        })
+    updateState = () => {
+        var volumes = JSON.parse(JSON.parse(decodeURIComponent(this.props.match.params.state)))
+        this.mountainInput.current.value = volumes.DrumVol
+        this.skyInput.current.value = volumes.BeachVol
+        this.icyInput.current.value = volumes.icyVol
+        this.setState({star : volumes.voxVol})
     }
 
     componentWillMount = () => {
@@ -335,7 +337,6 @@ class MountainRange extends Component {
     }
 
     render() {
-        console.log(this.state.volumes)
         return (
             <div>
                 <Balloons volumes={this.state.volumes} environment={1} />
