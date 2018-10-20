@@ -19,7 +19,7 @@ app.use( cors() )
 app.get('/api/examples', states.allStates)
 app.post('/api/examples', states.addState)
 
-//Catch all routes that don't match anything and send to Build/index.js for Production
+//Catch all routes that don't match anything and send to Build/index.js for Poduction
 app.get('/*', express.static(
     path.join(__dirname, '..', 'build')
 ))

@@ -4,11 +4,11 @@ import Tone from "tone";
 import Balloons from '../Balloons/Balloons';
 import HiddenMenu from '../Menu/Menu';
 
-const Brass = require("../Tonal - Audio/Mines/Funk - Boogie Right Brass 02.wav")
-const Bass = require("../Tonal - Audio/Mines/Funk - Bumping Disco Bass 02.wav")
-const Guitar = require("../Tonal - Audio/Mines/Funk - Bell Bottom Guitar.wav")
-const Piano = require("../Tonal - Audio/Mines/Funk - Funk Disco Piano Lead.wav")
-const Drums = require("../Tonal - Audio/Mines/Funk - Throwback Funk Beat 05.wav")
+const Brass = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540052302/Mines%20Audio/Funk_-_Boogie_Right_Brass_02.wav'
+const Bass = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540052302/Mines%20Audio/Funk_-_Bumping_Disco_Bass_02.wav'
+const Guitar = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540052302/Mines%20Audio/Funk_-_Bell_Bottom_Guitar.wav'
+const Piano = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540052302/Mines%20Audio/Funk_-_Funk_Disco_Piano_Lead.wav'
+const Drums = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540052301/Mines%20Audio/Funk_-_Throwback_Funk_Beat_05.wav'
 
 class Mines extends Component {
     constructor() {

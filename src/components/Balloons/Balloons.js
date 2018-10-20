@@ -59,19 +59,19 @@ export class Balloons extends Component {
         <div className="" ref={this.flash} ></div>
         <img
           className="MenuBalloon"
-          src={require("./Menu-Balloon.png")}
+          src='https://res.cloudinary.com/dchqywkud/image/upload/v1540051823/Menu-Balloon.png'
           onClick={() => this.handleClick("menu")}
           alt="World View Balloon"
         />
         <img
           className="RecordBalloon"
-          src={require("./Record-Balloon.png")}
+          src='https://res.cloudinary.com/dchqywkud/image/upload/v1540051823/Record-Balloon.png'
           onClick={() => this.handleClick("record")}
           alt="Record Song Balloon"
         />
         <img
           className="ResetBalloon"
-          src={require("./Reset-Balloon.png")}
+          src='https://res.cloudinary.com/dchqywkud/image/upload/v1540051823/Reset-Balloon.png'
           onClick={() => this.handleClick("reset")}
           alt="Reset Balloon"
         />

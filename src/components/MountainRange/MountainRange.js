@@ -4,10 +4,10 @@ import "./MountainRange.css";
 import Tone from "tone";
 import Balloons from '../Balloons/Balloons';
 import HiddenMenu from '../Menu/Menu';
-const Drum = require("../Tonal - Audio/MountainRange/Tonal - Acoustic Layers Beat 02.wav");
-const BeachSynth = require("../Tonal - Audio/MountainRange/Tonal - Beach Run Synth.wav");
-const IcySynth = require("../Tonal - Audio/MountainRange/Tonal - Icy Crystals Synth.wav");
-const Vox = require("../Tonal - Audio/MountainRange/Tonal - Stop And Go Vox.wav");
+const Drum = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540051547/Tonal_-_Acoustic_Layers_Beat_02.wav'
+const BeachSynth = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540051547/Tonal_-_Beach_Run_Synth.wav'
+const IcySynth = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540051547/Tonal_-_Icy_Crystals_Synth.wav'
+const Vox = 'https://res.cloudinary.com/dchqywkud/video/upload/v1540051547/Tonal_-_Stop_And_Go_Vox.wav'
 
 class MountainRange extends Component {
     constructor() {
