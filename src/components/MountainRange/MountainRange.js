@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import "./MountainRange.css";
 import Tone from "tone";
 import Balloons from '../Balloons/Balloons';

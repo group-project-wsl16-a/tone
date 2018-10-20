@@ -37,7 +37,7 @@ export class Balloons extends Component {
             var img = new Image();
             img.src = dataUrl;
             
-            axios.post(`http://localhost:3030/api/examples`, {
+            axios.post(`/api/examples`, {
               state: volumes,
               pic: img.src,
               environment: environment
