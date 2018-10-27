@@ -17,7 +17,7 @@ export default class WorldView extends Component {
     }
 
     componentDidMount = () => {
-    axios.get(`http://localhost:3030/api/examples`)
+    axios.get(`/api/examples`)
         .then(result => {
             this.shuffleState(result.data)
         })
