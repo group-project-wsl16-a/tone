@@ -2,14 +2,9 @@
   "autorun": true,
   "terminals": [
     {
-      "name": "Front-End",
+      "name": "Main Terminal",
       "focus": false,
       "command": ""
-    },
-    {
-      "name": "Server",
-      "focus": false,
-      "command": "cd server"
     }
   ]
 }

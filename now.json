@@ -1,5 +1,5 @@
 {
     "env" : {
-        "CONNECTION_STRING": "@tonal-group-project"
+        "CONNECTION_STRING": "@tonal-group"
     }
 }

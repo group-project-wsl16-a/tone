@@ -9,8 +9,8 @@ const massive = require('massive');
 const app = express()
 
 //Connecting to the Database
-// console.log(process.env.CONNECTION_STRING)
-massive( process.env.CONNECTION_STRING ).then( dbInstance => { app.set('db', dbInstance) });
+console.log('Connection string', process.env.CONNECTION_STRING)
+massive( process.env.CONNECTION_STRING, {"scripts":path.join(__dirname, "db")}).then( dbInstance => { app.set('db', dbInstance) });
 
 app.use(bodyParser.json({limit: '700kb'}));
 app.use( cors() )
